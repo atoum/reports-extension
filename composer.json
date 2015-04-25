@@ -1,0 +1,32 @@
+{
+    "name": "atoum/reports-extension",
+    "type": "library",
+    "description": "atoum Reports extension",
+    "keywords": ["TDD","atoum","test","unit testing","reports"],
+    "homepage": "http://www.atoum.org",
+    "license": "BSD",
+    "authors": [
+        {
+            "name": "jubianchi",
+            "email": "contact@jubianchi.fr"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "/Users/julien.bianchi/repositories/atoum/atoum"
+        }
+    ],
+    "require": {
+        "twig/twig": "~1.18"
+    },
+    "require-dev": {
+        "atoum/atoum": "dev-branch-path-coverage as 2.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "mageekguy\\atoum\\reports\\": "classes"
+        },
+        "files": ["autoloader.php"]
+    }
+}

@@ -1,0 +1,34 @@
+{% import 'macros.twig' as macros %}
+
+<table class="table table-bordered table-striped sort">
+    <thead>
+    <tr>
+        <th>Method <i class="fa"></i></th>
+        <th style="width: 110px; text-align: center">Line <i class="fa"></i></th>
+        <th style="width: 110px; text-align: center">OPs <i class="fa"></i></th>
+        <th style="width: 110px; text-align: center">Branches <i class="fa"></i></th>
+        <th style="width: 110px; text-align: center">Path <i class="fa"></i></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for methodname, methoddata in data.methods %}
+        <tr>
+            <td><a href="#{{ methodname }}">{{ class }}::{{ methodname }}()</a></td>
+            <td style="text-align: center">{{ macros.labelify(methoddata.coverage.lines) }}</td>
+            <td style="text-align: center">{{ macros.labelify(methoddata.coverage.ops) }}</td>
+            <td style="text-align: center">{{ macros.labelify(methoddata.coverage.branches) }}</td>
+            <td style="text-align: center">{{ macros.labelify(methoddata.coverage.paths) }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>Total</th>
+        <td style="text-align: center">{{ macros.labelify(data.coverage.lines) }}</td>
+        <td style="text-align: center">{{ macros.labelify(data.coverage.ops) }}</td>
+        <td style="text-align: center">{{ macros.labelify(data.coverage.branches) }}</td>
+        <td style="text-align: center">{{ macros.labelify(data.coverage.paths) }}</td>
+    </tr>
+    </tfoot>
+</table>

@@ -1,0 +1,35 @@
+{% extends 'layout.html.twig' %}
+{% import 'macros.twig' as macros %}
+
+{% block content %}
+    <div class="row">
+        <h1 class="pull-left">Code coverage report</h1>
+        <h2 class="pull-right text-{{ macros.color(coverage) }}">{{ coverage|round(2) * 100 }}%</h2>
+
+        <table class="table table-bordered table-striped sort">
+            <thead>
+            <tr>
+                <th>Class <i class="fa"></i></th>
+                <th style="width: 110px; text-align: center">Methods <i class="fa"></i></th>
+                <th style="width: 110px; text-align: center">Lines <i class="fa"></i></th>
+                <th style="width: 110px; text-align: center">OPs <i class="fa"></i></th>
+                <th style="width: 110px; text-align: center">Branches <i class="fa"></i></th>
+                <th style="width: 110px; text-align: center">Paths <i class="fa"></i></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for classname, classdata in data.classes %}
+                <tr>
+                    <td><a href="./{{ classname|replace({'\\': '-'}) }}.html">{{ classname }}</a></td>
+                    <td style="text-align: center">{{ macros.labelify(classdata.coverage.methods) }}</td>
+                    <td style="text-align: center">{{ macros.labelify(classdata.coverage.lines) }}</td>
+                    <td style="text-align: center">{{ macros.labelify(classdata.coverage.ops) }}</td>
+                    <td style="text-align: center">{{ macros.labelify(classdata.coverage.branches) }}</td>
+                    <td style="text-align: center">{{ macros.labelify(classdata.coverage.paths) }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
