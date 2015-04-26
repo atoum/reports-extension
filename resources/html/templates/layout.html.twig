@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <script src="assets/d3.js" charset="utf-8"></script>
+    <script src="assets/dagre-d3.js"></script>
+    <script src="assets/jquery.js"></script>
+    <script src="assets/jquery.tablesorter.js"></script>
+    <script src="assets/report.js"></script>
+
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/report.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html"><img src="assets/logo.png" alt="atoum"/> Code coverage report</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="col-lg-12">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer class="row">
+        <div class="col-lg-12">
+            <small class="pull-right">Powered by <a href="http://atoum.org"><img src="assets/logo.png" alt="atoum"/></a></small>
+        </div>
+    </footer>
+</div>
+
+<script>
+    $(function() {
+        $('table.sort').tablesorter();
+    })
+</script>
+
+</body>
+
+</html>

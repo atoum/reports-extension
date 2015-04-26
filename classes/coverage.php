@@ -4,8 +4,9 @@ namespace mageekguy\atoum\reports;
 
 use mageekguy\atoum;
 
-class coverage extends twig
+class coverage extends asynchronous
 {
+    protected $score;
     protected $coverage;
 
     public function handleEvent($event, atoum\observable $observable)

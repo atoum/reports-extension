@@ -11,17 +11,12 @@
             "email": "contact@jubianchi.fr"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "/Users/julien.bianchi/repositories/atoum/atoum"
-        }
-    ],
     "require": {
-        "twig/twig": "~1.18"
+        "twig/twig": "~1.18",
+        "symfony/filesystem": "~2.6.6"
     },
     "require-dev": {
-        "atoum/atoum": "dev-branch-path-coverage as 2.1.0"
+        "atoum/atoum": "~2.0"
     },
     "autoload": {
         "psr-4": {

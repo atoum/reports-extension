@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+{% import 'macros.twig' as macros %}
+
+{% block  content %}
+    <div class="row">
+        <h1>{{ class }}: lines coverage</h1>
+
+        {% include 'methods.html.twig' %}
+
+        <table class="table table-bordered table-stripped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for number, line in lines %}
+                <tr class="line" {% if line.method is defined %}id="{{ line.method }}"{% endif %}>
+                    <th id="L{{ number }}" class="number {{ line.hit >= 1 ? 'covered' : line.hit == -1 ? 'uncovered' : line.hit == -2 ? 'unreach' : '' }}">{{ number }}</th>
+
+                    <td class="{{ line.hit >= 1 ? 'covered' : line.hit == -1 ? 'uncovered' : line.hit == -2 ? 'unreach' : '' }}" {% if line.method %}id="{{ line.method }}"{% endif %}>
+                        <pre>{{ line.code }}{% spaceless %}
+                            {% if line.method is not null %}
+                                {{ macros.labelify(methods[line.method].coverage.lines) }}
+                                {{ macros.navigation(class, line.method, methods[line.method].coverage, 'line') }}
+                            {% endif %}
+                        {% endspaceless %}</pre>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

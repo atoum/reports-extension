@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+{% import 'macros.twig' as macros %}
+
+{% block content %}
+    <div class="row">
+        <h1>{{ class }}: paths coverage</h1>
+
+        {% include 'methods.html.twig' %}
+
+        {% for methodname, methoddata in methods %}
+            <div class="panel panel-{{ macros.color(methoddata.coverage.paths) }}" id="{{ methodname }}">
+                <div class="panel-heading">
+                    {{ class }}::{{ methodname }}()
+                    {{ macros.labelify(methoddata.coverage.paths) }}
+                    {{ macros.navigation(class, methodname, methoddata.coverage, 'paths') }}
+                </div>
+                <div class="panel-body">
+                    <div class="graph"><svg></svg></div>
+                </div>
+            </div>
+
+            <script>
+                var g = graph('{{ class|replace({'\\': '\\\\'}) }}', '{{ methodname }}');
+
+                {% for branch in methoddata.branches %}
+                    g.addNode({% autoescape false %}{{ branch|json_encode }}{% endautoescape %});
+                {% endfor %}
+
+                g.roundNodes();
+
+                {% for pathindex, path in methoddata.paths %}
+                    {% for index, begin in path.path %}
+                        {% set next = path.path[index + 1] is defined ? path.path[index + 1] : null %}
+
+                        {% if next %}
+                            g.addPath({{ begin }}, {{ next }}, {{ path.hit }});
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+
+                g.render();
+            </script>
+        {% endfor %}
+    </div>
+{% endblock %}

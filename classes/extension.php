@@ -15,13 +15,6 @@ class extension implements atoum\extension
 	{
 		if ($configurator)
 		{
-			$configurator->getScript()->setDefaultReportFactory(function($script) {
-				$report = new realtime\cli();
-				$report->addWriter($script->getOutputWriter());
-
-				return $report;
-			});
-
 			$parser = $configurator->getScript()->getArgumentsParser();
 
 			$handler = function($script, $argument, $values) {

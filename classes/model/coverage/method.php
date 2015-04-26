@@ -2,20 +2,41 @@
 
 namespace mageekguy\atoum\reports\model\coverage;
 
-use mageekguy\atoum\reports\score\coverage;
+use mageekguy\atoum\exceptions\runtime;
+use mageekguy\atoum\reports\model;
+use mageekguy\atoum\reports\template;
 
-class method
+class method extends model
 {
-    private $coverage;
+    private $method;
+    private $branches;
+    private $paths;
 
-    public function __construct()
+    public function __construct($method, array $branches = null, array $paths = null)
     {
-        $this->methods = array();
+        $this->method = $method;
+        $this->branches = $branches;
+        $this->paths = $paths;
     }
 
-    public function coverageIs(coverage\method $coverage)
+    public function addToModel(klass $class)
     {
-        $this->coverage = $coverage;
+        $class->addMethod($this->method, $this->coverage, $this->branches, $this->paths);
+
+        return $this;
+    }
+
+    public function renderTo(template $template, $destination)
+    {
+        $template->render(
+            array(
+                'method' => $this->method,
+                'coverage' => $this->coverage,
+                'branches' => $this->branches,
+                'paths' => $this->paths
+            ),
+            $destination
+        );
 
         return $this;
     }

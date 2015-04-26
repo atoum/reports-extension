@@ -2,9 +2,12 @@
 
 namespace mageekguy\atoum\reports\model;
 
-class coverage
+use mageekguy\atoum\exceptions\runtime;
+use mageekguy\atoum\reports\model;
+use mageekguy\atoum\reports\template;
+
+class coverage extends model
 {
-    private $coverage;
     private $classes;
 
     public function __construct()
@@ -12,20 +15,23 @@ class coverage
         $this->classes = array();
     }
 
-    public function coverageIs($lines = null, $branches = null, $paths = null)
+    public function addClass($name, $coverage, $methods, $lines)
     {
-        $this->coverage = array(
+        $this->classes[$name] = array(
+            'coverage' => $coverage,
+            'methods' => $methods,
             'lines' => $lines,
-            'branches' => $branches,
-            'paths' => $paths,
         );
 
         return $this;
     }
 
-    public function addClass($name, coverage\klass $model)
+    public function renderTo(template $template, $destination)
     {
-        $this->classes[$name] = $model;
+        $template->render(array(
+            'classes' => $this->classes,
+            'coverage' => $this->coverage
+        ), $destination);
 
         return $this;
     }

@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %}
+{% import 'macros.twig' as macros %}
+
+{% block content %}
+    <div class="row">
+        <h1>{{ class }}: branches coverage</h1>
+
+        {% include 'methods.html.twig' %}
+
+        {% for methodname, methoddata in methods %}
+            <div class="panel panel-{{ macros.color(methoddata.coverage.branches) }}" id="{{ methodname }}">
+                <div class="panel-heading">
+                    {{ class }}::{{ methodname }}()
+                    {{ macros.labelify(methoddata.coverage.branches) }}
+                    {{ macros.navigation(class, methodname, methoddata.coverage, 'branches') }}
+                </div>
+                <div class="panel-body">
+                    <div class="graph"><svg></svg></div>
+                </div>
+            </div>
+
+            <script>
+                var g = graph('{{ class|replace({'\\': '\\\\'}) }}', '{{ methodname }}');
+
+                {% for branch in methoddata.branches %}
+                    g.addNode({% autoescape false %}{{ branch|json_encode }}{% endautoescape %});
+                {% endfor %}
+
+                g.roundNodes();
+
+                {% for branch in methoddata.branches %}
+                    {% for outindex, out in branch.out %}
+                        {% if out != 2147483645 %}
+                            g.addBranch({{ branch.op_start }}, {{ out }}, {{ branch.out_hit[outindex] }});
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+
+                g.render();
+            </script>
+        {% endfor %}
+    </div>
+{% endblock %}

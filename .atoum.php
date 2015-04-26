@@ -8,4 +8,12 @@ use
 
 $runner->addExtension(new reports\extension($script));
 $script->addDefaultReport();
-$runner->addReport(new coverage\code());
+
+$coverage = new coverage\html();
+$coverage->addWriter(new \mageekguy\atoum\writers\std\out());
+$coverage->setOutPutDirectory(__DIR__ . '/coverage');
+$runner->addReport($coverage);
+
+$script->enableBranchAndPAthCoverage();
+$script->noCodeCoverageForClasses('mageekguy\atoum\reports\asynchronous');
+$script->noCodeCoverageForClasses('mageekguy\atoum\report');

@@ -1,0 +1,28 @@
+{% macro color(value) %}{% spaceless %}
+        {{ value is not null ? (value < 0.3 ? 'danger' : (value < 0.7 ? 'warning' : 'success')) : 'default' }}
+{% endspaceless %}{% endmacro %}
+
+{% macro labelify(value) %}
+    {% set class = value is not null ? (value < 0.3 ? 'danger' : (value < 0.7 ? 'warning' : 'success')) : 'default' %}
+
+    <span class="label label-{{ class }}">{{ value is not null ? value|round(2) * 100 ~'%' : 'N/A' }}</span>
+{% endmacro %}
+
+{% macro navigation(class, method, coverage, without) %}
+    <div class="btn-group">
+        {% if without != 'line' and coverage.lines is not null%}
+            {% set color = coverage.lines < 0.3 ? 'danger' : (coverage.lines < 0.7 ? 'warning' : 'success') %}
+            <a href="./{{ class|replace({'\\': '-'}) }}.html#{{ method }}" class="btn btn-sm btn-{{ color }}" title="Show lines coverage"><i class="fa fa-align-justify"></i></a>
+        {% endif %}
+
+        {% if without != 'branches' and coverage.branches is not null %}
+            {% set color = coverage.branches < 0.3 ? 'danger' : (coverage.branches < 0.7 ? 'warning' : 'success') %}
+            <a href="./{{ class|replace({'\\': '-'}) }}-branch.html#{{ method }}" class="btn btn-sm btn-{{ color }}" title="Show branches coverage"><i class="fa fa-code-fork"></i></a>
+        {% endif %}
+
+        {% if without != 'paths' and coverage.paths is not null %}
+            {% set color = coverage.paths < 0.3 ? 'danger' : (coverage.paths < 0.7 ? 'warning' : 'success') %}
+            <a href="./{{ class|replace({'\\': '-'}) }}-path.html#{{ method }}" class="btn btn-sm btn-{{ color }}" title="Show paths coverage"><i class="fa fa-road"></i></a>
+        {% endif %}
+    </div>
+{% endmacro %}
