@@ -1,3 +1,3 @@
 [submodule "coverage"]
 	path = coverage
-	url = git@github.com:atoum/reports-extension.git
+	url = https://github.com/atoum/reports-extension.git 
