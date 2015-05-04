@@ -10,8 +10,6 @@ php:
 sudo: false
 
 before_script:
-  - "[ -z \"$(php -v | grep -E '5.3')\" ] && wget https://github.com/FriendsOfPHP/pickle/releases/download/v0.4.0/pickle.phar || true"
-  - "[ -z \"$(php -v | grep -E '5.3')\" ] && php pickle.phar install xdebug || true"
   - php -v
   - composer install
 
