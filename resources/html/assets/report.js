@@ -28,6 +28,17 @@ var graph = function(classname, method, padding) {
         return g;
     };
 
+    g.addEnd = function() {
+        g.setNode(
+            2147483645,
+            {
+                label: 'EXIT'
+            }
+        );
+
+        return g;
+    };
+
     g.addBranch = function(begin, end, hit) {
         var options = {
             class: hit ? 'covered' : 'uncovered',

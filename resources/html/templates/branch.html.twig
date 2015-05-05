@@ -26,13 +26,11 @@
                     g.addNode({% autoescape false %}{{ branch|json_encode }}{% endautoescape %});
                 {% endfor %}
 
-                g.roundNodes();
+                g.addEnd().roundNodes();
 
                 {% for branch in methoddata.branches %}
                     {% for outindex, out in branch.out %}
-                        {% if out != 2147483645 %}
-                            g.addBranch({{ branch.op_start }}, {{ out }}, {{ branch.out_hit[outindex] }});
-                        {% endif %}
+                        g.addBranch({{ branch.op_start }}, {{ out }}, {{ branch.out_hit[outindex] }});
                     {% endfor %}
                 {% endfor %}
 

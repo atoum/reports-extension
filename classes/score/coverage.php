@@ -18,8 +18,6 @@ class coverage
 
     public function branchIsAvailable(array $branch)
     {
-        $this->totalBranches++;
-
         if ($this->totalOps === null)
         {
             $this->totalOps = 1;
@@ -32,14 +30,34 @@ class coverage
 
         if ($branch['hit'] > 0)
         {
-            $this->coveredBranches++;
-
             $this->coveredOps = array_unique(
                 array_merge(
                     $this->coveredOps ?: array(),
                     range($branch['op_start'], $branch['op_end'])
                 )
             );
+        }
+
+        if (sizeof($branch['out']) === 0)
+        {
+            $this->totalBranches++;
+
+            if ($branch['hit'] === 1)
+            {
+                $this->coveredBranches++;
+            }
+        }
+        else
+        {
+            foreach ($branch['out'] as $index => $out)
+            {
+                $this->totalBranches++;
+
+                if ($branch['out_hit'][$index] === 1)
+                {
+                    $this->coveredBranches++;
+                }
+            }
         }
 
         return $this;
