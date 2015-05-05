@@ -1,0 +1,162 @@
+<html>
+
+<head>
+    <script src="assets/d3.js" charset="utf-8"></script>
+    <script src="assets/dagre-d3.js"></script>
+    <script src="assets/jquery.js"></script>
+    <script src="assets/jquery.tablesorter.js"></script>
+    <script src="assets/report.js"></script>
+
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/report.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html"><img src="assets/logo.png" alt="atoum"/> Code coverage report</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="col-lg-12">
+            <div class="row">
+        <h1>mageekguy\atoum\report\fields\test\memory\phing: paths coverage</h1>
+
+        
+<table class="table table-bordered">
+    <tr>
+        <td style="text-align: center; width: 25%">
+            <h1 class="text-success">
+                100%
+                                    <small>of 52</small>
+                            </h1>
+            <strong>OPs</strong>
+        </td>
+        <td style="text-align: center; width: 25%">
+            <h1 class="text-success">
+                100%
+                                    <small>of 6</small>
+                            </h1>
+            <strong>Lines</strong>
+        </td>
+        <td style="text-align: center; width: 25%">
+            <h1 class="text-success">
+                100%
+                                    <small>of 5</small>
+                            </h1>
+            <strong>Branches</strong>
+        </td>
+        <td style="text-align: center; width: 25%">
+            <h1 class="text-success">
+                100%
+                                    <small>of 2</small>
+                            </h1>
+            <strong>Paths</strong>
+        </td>
+    </tr>
+</table>
+
+<table class="table table-bordered table-striped table-hover sort">
+    <thead>
+    <tr>
+        <th>Method <i class="fa"></i></th>
+        <th style="text-align: center">OPs <i class="fa"></i></th>
+        <th style="text-align: center">OPs % <i class="fa"></i></th>
+        <th style="text-align: center">Lines <i class="fa"></i></th>
+        <th style="text-align: center">Line % <i class="fa"></i></th>
+        <th style="text-align: center">Branches <i class="fa"></i></th>
+        <th style="text-align: center">Branches % <i class="fa"></i></th>
+        <th style="text-align: center">Paths <i class="fa"></i></th>
+        <th style="text-align: center">Path % <i class="fa"></i></th>
+    </tr>
+    </thead>
+
+    <tbody>
+            <tr>
+            <td><a href="#__toString">mageekguy\atoum\report\fields\test\memory\phing::__toString()</a></td>
+            <td style="text-align: center">52</td>
+            <td style="text-align: center">    
+    <span class="label label-success">100%</span>
+</td>
+            <td style="text-align: center">6</td>
+            <td style="text-align: center">    
+    <span class="label label-success">100%</span>
+</td>
+            <td style="text-align: center">5</td>
+            <td style="text-align: center">    
+    <span class="label label-success">100%</span>
+</td>
+            <td style="text-align: center">2</td>
+            <td style="text-align: center">    
+    <span class="label label-success">100%</span>
+</td>
+        </tr>
+        </tbody>
+</table>
+
+                    <div class="panel panel-success" id="__toString">
+                <div class="panel-heading">
+                    mageekguy\atoum\report\fields\test\memory\phing::__toString()
+                        
+    <span class="label label-success">100%</span>
+
+                        <div class="btn-group">
+                                <a href="./mageekguy-atoum-report-fields-test-memory-phing.html#__toString" class="btn btn-sm btn-success" title="Show lines coverage"><i class="fa fa-align-justify"></i></a>
+        
+                                <a href="./mageekguy-atoum-report-fields-test-memory-phing-branch.html#__toString" class="btn btn-sm btn-success" title="Show branches coverage"><i class="fa fa-code-fork"></i></a>
+        
+            </div>
+
+                </div>
+                <div class="panel-body">
+                    <div class="graph"><svg></svg></div>
+                </div>
+            </div>
+
+            <script>
+                var g = graph('mageekguy\\atoum\\report\\fields\\test\\memory\\phing', '__toString');
+
+                                    g.addNode({"op_start":0,"op_end":18,"line_start":15,"line_end":20,"hit":1,"out":[19,27],"out_hit":[1,1]});
+                                    g.addNode({"op_start":19,"op_end":26,"line_start":20,"line_end":20,"hit":1,"out":[42],"out_hit":[1]});
+                                    g.addNode({"op_start":27,"op_end":41,"line_start":20,"line_end":20,"hit":1,"out":[42],"out_hit":[1]});
+                                    g.addNode({"op_start":42,"op_end":51,"line_start":20,"line_end":23,"hit":1,"out":[],"out_hit":[]});
+                
+                g.roundNodes();
+
+                                                            
+                                                    g.addPath(0, 19, 1);
+                                                                    
+                                                    g.addPath(19, 42, 1);
+                                                                    
+                                                                                                        
+                                                    g.addPath(0, 27, 1);
+                                                                    
+                                                    g.addPath(27, 42, 1);
+                                                                    
+                                                            
+                g.render();
+            </script>
+            </div>
+    </div>
+
+    <footer class="row">
+        <div class="col-lg-12">
+            <small class="pull-right">Powered by <a href="http://atoum.org"><img src="assets/logo.png" alt="atoum"/></a></small>
+        </div>
+    </footer>
+</div>
+
+<script>
+    $(function() {
+        $('table.sort').tablesorter();
+    })
+</script>
+
+</body>
+
+</html>

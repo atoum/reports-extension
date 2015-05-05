@@ -1,0 +1,179 @@
+<html>
+
+<head>
+    <script src="assets/d3.js" charset="utf-8"></script>
+    <script src="assets/dagre-d3.js"></script>
+    <script src="assets/jquery.js"></script>
+    <script src="assets/jquery.tablesorter.js"></script>
+    <script src="assets/report.js"></script>
+
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/report.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html"><img src="assets/logo.png" alt="atoum"/> Code coverage report</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="col-lg-12">
+            <div class="row">
+        <h1>mageekguy\atoum\mailers\mail: branches coverage</h1>
+
+        
+<table class="table table-bordered">
+    <tr>
+        <td style="text-align: center; width: 25%">
+            <h1 class="text-success">
+                96%
+                                    <small>of 124</small>
+                            </h1>
+            <strong>OPs</strong>
+        </td>
+        <td style="text-align: center; width: 25%">
+            <h1 class="text-success">
+                100%
+                                    <small>of 22</small>
+                            </h1>
+            <strong>Lines</strong>
+        </td>
+        <td style="text-align: center; width: 25%">
+            <h1 class="text-success">
+                74%
+                                    <small>of 19</small>
+                            </h1>
+            <strong>Branches</strong>
+        </td>
+        <td style="text-align: center; width: 25%">
+            <h1 class="text-success">
+                100%
+                                    <small>of 7</small>
+                            </h1>
+            <strong>Paths</strong>
+        </td>
+    </tr>
+</table>
+
+<table class="table table-bordered table-striped table-hover sort">
+    <thead>
+    <tr>
+        <th>Method <i class="fa"></i></th>
+        <th style="text-align: center">OPs <i class="fa"></i></th>
+        <th style="text-align: center">OPs % <i class="fa"></i></th>
+        <th style="text-align: center">Lines <i class="fa"></i></th>
+        <th style="text-align: center">Line % <i class="fa"></i></th>
+        <th style="text-align: center">Branches <i class="fa"></i></th>
+        <th style="text-align: center">Branches % <i class="fa"></i></th>
+        <th style="text-align: center">Paths <i class="fa"></i></th>
+        <th style="text-align: center">Path % <i class="fa"></i></th>
+    </tr>
+    </thead>
+
+    <tbody>
+            <tr>
+            <td><a href="#send">mageekguy\atoum\mailers\mail::send()</a></td>
+            <td style="text-align: center">124</td>
+            <td style="text-align: center">    
+    <span class="label label-success">96%</span>
+</td>
+            <td style="text-align: center">22</td>
+            <td style="text-align: center">    
+    <span class="label label-success">100%</span>
+</td>
+            <td style="text-align: center">19</td>
+            <td style="text-align: center">    
+    <span class="label label-success">74%</span>
+</td>
+            <td style="text-align: center">7</td>
+            <td style="text-align: center">    
+    <span class="label label-success">100%</span>
+</td>
+        </tr>
+        </tbody>
+</table>
+
+                    <div class="panel panel-success" id="send">
+                <div class="panel-heading">
+                    mageekguy\atoum\mailers\mail::send()
+                        
+    <span class="label label-success">74%</span>
+
+                        <div class="btn-group">
+                                <a href="./mageekguy-atoum-mailers-mail.html#send" class="btn btn-sm btn-success" title="Show lines coverage"><i class="fa fa-align-justify"></i></a>
+        
+        
+                                <a href="./mageekguy-atoum-mailers-mail-path.html#send" class="btn btn-sm btn-success" title="Show paths coverage"><i class="fa fa-road"></i></a>
+            </div>
+
+                </div>
+                <div class="panel-body">
+                    <div class="graph"><svg></svg></div>
+                </div>
+            </div>
+
+            <script>
+                var g = graph('mageekguy\\atoum\\mailers\\mail', 'send');
+
+                                    g.addNode({"op_start":0,"op_end":6,"line_start":14,"line_end":17,"hit":1,"out":[7,16],"out_hit":[1,1]});
+                                    g.addNode({"op_start":7,"op_end":14,"line_start":18,"line_end":18,"hit":1,"out":[2147483645],"out_hit":[0]});
+                                    g.addNode({"op_start":16,"op_end":20,"line_start":21,"line_end":22,"hit":1,"out":[21,30],"out_hit":[1,1]});
+                                    g.addNode({"op_start":21,"op_end":28,"line_start":23,"line_end":23,"hit":1,"out":[2147483645],"out_hit":[0]});
+                                    g.addNode({"op_start":30,"op_end":34,"line_start":26,"line_end":27,"hit":1,"out":[35,44],"out_hit":[1,1]});
+                                    g.addNode({"op_start":35,"op_end":42,"line_start":28,"line_end":28,"hit":1,"out":[2147483645],"out_hit":[0]});
+                                    g.addNode({"op_start":44,"op_end":48,"line_start":31,"line_end":32,"hit":1,"out":[49,58],"out_hit":[1,1]});
+                                    g.addNode({"op_start":49,"op_end":56,"line_start":33,"line_end":33,"hit":1,"out":[2147483645],"out_hit":[0]});
+                                    g.addNode({"op_start":58,"op_end":62,"line_start":36,"line_end":37,"hit":1,"out":[63,72],"out_hit":[1,1]});
+                                    g.addNode({"op_start":63,"op_end":70,"line_start":38,"line_end":38,"hit":1,"out":[2147483645],"out_hit":[0]});
+                                    g.addNode({"op_start":72,"op_end":92,"line_start":41,"line_end":44,"hit":1,"out":[93,107],"out_hit":[1,1]});
+                                    g.addNode({"op_start":93,"op_end":106,"line_start":45,"line_end":46,"hit":1,"out":[107],"out_hit":[1]});
+                                    g.addNode({"op_start":107,"op_end":123,"line_start":48,"line_end":51,"hit":1,"out":[],"out_hit":[]});
+                
+                g.addEnd().roundNodes();
+
+                                                            g.addBranch(0, 7, 1);
+                                            g.addBranch(0, 16, 1);
+                                                                                g.addBranch(7, 2147483645, 0);
+                                                                                g.addBranch(16, 21, 1);
+                                            g.addBranch(16, 30, 1);
+                                                                                g.addBranch(21, 2147483645, 0);
+                                                                                g.addBranch(30, 35, 1);
+                                            g.addBranch(30, 44, 1);
+                                                                                g.addBranch(35, 2147483645, 0);
+                                                                                g.addBranch(44, 49, 1);
+                                            g.addBranch(44, 58, 1);
+                                                                                g.addBranch(49, 2147483645, 0);
+                                                                                g.addBranch(58, 63, 1);
+                                            g.addBranch(58, 72, 1);
+                                                                                g.addBranch(63, 2147483645, 0);
+                                                                                g.addBranch(72, 93, 1);
+                                            g.addBranch(72, 107, 1);
+                                                                                g.addBranch(93, 107, 1);
+                                                                        
+                g.render();
+            </script>
+            </div>
+    </div>
+
+    <footer class="row">
+        <div class="col-lg-12">
+            <small class="pull-right">Powered by <a href="http://atoum.org"><img src="assets/logo.png" alt="atoum"/></a></small>
+        </div>
+    </footer>
+</div>
+
+<script>
+    $(function() {
+        $('table.sort').tablesorter();
+    })
+</script>
+
+</body>
+
+</html>

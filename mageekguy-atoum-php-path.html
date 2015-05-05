@@ -1,0 +1,320 @@
+<html>
+
+<head>
+    <script src="assets/d3.js" charset="utf-8"></script>
+    <script src="assets/dagre-d3.js"></script>
+    <script src="assets/jquery.js"></script>
+    <script src="assets/jquery.tablesorter.js"></script>
+    <script src="assets/report.js"></script>
+
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/report.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html"><img src="assets/logo.png" alt="atoum"/> Code coverage report</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="col-lg-12">
+            <div class="row">
+        <h1>mageekguy\atoum\php: paths coverage</h1>
+
+        
+<table class="table table-bordered">
+    <tr>
+        <td style="text-align: center; width: 25%">
+            <h1 class="text-success">
+                90%
+                                    <small>of 91</small>
+                            </h1>
+            <strong>OPs</strong>
+        </td>
+        <td style="text-align: center; width: 25%">
+            <h1 class="text-success">
+                96%
+                                    <small>of 24</small>
+                            </h1>
+            <strong>Lines</strong>
+        </td>
+        <td style="text-align: center; width: 25%">
+            <h1 class="text-success">
+                89%
+                                    <small>of 19</small>
+                            </h1>
+            <strong>Branches</strong>
+        </td>
+        <td style="text-align: center; width: 25%">
+            <h1 class="text-warning">
+                45%
+                                    <small>of 11</small>
+                            </h1>
+            <strong>Paths</strong>
+        </td>
+    </tr>
+</table>
+
+<table class="table table-bordered table-striped table-hover sort">
+    <thead>
+    <tr>
+        <th>Method <i class="fa"></i></th>
+        <th style="text-align: center">OPs <i class="fa"></i></th>
+        <th style="text-align: center">OPs % <i class="fa"></i></th>
+        <th style="text-align: center">Lines <i class="fa"></i></th>
+        <th style="text-align: center">Line % <i class="fa"></i></th>
+        <th style="text-align: center">Branches <i class="fa"></i></th>
+        <th style="text-align: center">Branches % <i class="fa"></i></th>
+        <th style="text-align: center">Paths <i class="fa"></i></th>
+        <th style="text-align: center">Path % <i class="fa"></i></th>
+    </tr>
+    </thead>
+
+    <tbody>
+            <tr>
+            <td><a href="#setBinaryPath">mageekguy\atoum\php::setBinaryPath()</a></td>
+            <td style="text-align: center">91</td>
+            <td style="text-align: center">    
+    <span class="label label-success">90%</span>
+</td>
+            <td style="text-align: center">24</td>
+            <td style="text-align: center">    
+    <span class="label label-success">96%</span>
+</td>
+            <td style="text-align: center">19</td>
+            <td style="text-align: center">    
+    <span class="label label-success">89%</span>
+</td>
+            <td style="text-align: center">11</td>
+            <td style="text-align: center">    
+    <span class="label label-warning">45%</span>
+</td>
+        </tr>
+        </tbody>
+</table>
+
+                    <div class="panel panel-warning" id="setBinaryPath">
+                <div class="panel-heading">
+                    mageekguy\atoum\php::setBinaryPath()
+                        
+    <span class="label label-warning">45%</span>
+
+                        <div class="btn-group">
+                                <a href="./mageekguy-atoum-php.html#setBinaryPath" class="btn btn-sm btn-success" title="Show lines coverage"><i class="fa fa-align-justify"></i></a>
+        
+                                <a href="./mageekguy-atoum-php-branch.html#setBinaryPath" class="btn btn-sm btn-success" title="Show branches coverage"><i class="fa fa-code-fork"></i></a>
+        
+            </div>
+
+                </div>
+                <div class="panel-body">
+                    <div class="graph"><svg></svg></div>
+                </div>
+            </div>
+
+            <script>
+                var g = graph('mageekguy\\atoum\\php', 'setBinaryPath');
+
+                                    g.addNode({"op_start":0,"op_end":5,"line_start":12,"line_end":15,"hit":1,"out":[6,81],"out_hit":[1,1]});
+                                    g.addNode({"op_start":6,"op_end":15,"line_start":16,"line_end":17,"hit":1,"out":[16,25],"out_hit":[1,1]});
+                                    g.addNode({"op_start":16,"op_end":24,"line_start":18,"line_end":19,"hit":1,"out":[25],"out_hit":[1]});
+                                    g.addNode({"op_start":25,"op_end":28,"line_start":21,"line_end":22,"hit":1,"out":[29,80],"out_hit":[1,1]});
+                                    g.addNode({"op_start":29,"op_end":40,"line_start":23,"line_end":26,"hit":1,"out":[41,79],"out_hit":[1,1]});
+                                    g.addNode({"op_start":41,"op_end":52,"line_start":27,"line_end":30,"hit":1,"out":[53,78],"out_hit":[1,1]});
+                                    g.addNode({"op_start":53,"op_end":64,"line_start":31,"line_end":34,"hit":1,"out":[65,74],"out_hit":[0,1]});
+                                    g.addNode({"op_start":65,"op_end":72,"line_start":35,"line_end":35,"hit":0,"out":[2147483645],"out_hit":[0]});
+                                    g.addNode({"op_start":74,"op_end":77,"line_start":38,"line_end":39,"hit":1,"out":[78],"out_hit":[1]});
+                                    g.addNode({"op_start":78,"op_end":78,"line_start":40,"line_end":40,"hit":1,"out":[79],"out_hit":[1]});
+                                    g.addNode({"op_start":79,"op_end":79,"line_start":41,"line_end":41,"hit":1,"out":[80],"out_hit":[1]});
+                                    g.addNode({"op_start":80,"op_end":80,"line_start":42,"line_end":42,"hit":1,"out":[81],"out_hit":[1]});
+                                    g.addNode({"op_start":81,"op_end":90,"line_start":44,"line_end":45,"hit":1,"out":[],"out_hit":[]});
+                
+                g.roundNodes();
+
+                                                            
+                                                    g.addPath(0, 6, 0);
+                                                                    
+                                                    g.addPath(6, 16, 0);
+                                                                    
+                                                    g.addPath(16, 25, 0);
+                                                                    
+                                                    g.addPath(25, 29, 0);
+                                                                    
+                                                    g.addPath(29, 41, 0);
+                                                                    
+                                                    g.addPath(41, 53, 0);
+                                                                    
+                                                    g.addPath(53, 65, 0);
+                                                                    
+                                                                                                        
+                                                    g.addPath(0, 6, 0);
+                                                                    
+                                                    g.addPath(6, 16, 0);
+                                                                    
+                                                    g.addPath(16, 25, 0);
+                                                                    
+                                                    g.addPath(25, 29, 0);
+                                                                    
+                                                    g.addPath(29, 41, 0);
+                                                                    
+                                                    g.addPath(41, 53, 0);
+                                                                    
+                                                    g.addPath(53, 74, 0);
+                                                                    
+                                                    g.addPath(74, 78, 0);
+                                                                    
+                                                    g.addPath(78, 79, 0);
+                                                                    
+                                                    g.addPath(79, 80, 0);
+                                                                    
+                                                    g.addPath(80, 81, 0);
+                                                                    
+                                                                                                        
+                                                    g.addPath(0, 6, 0);
+                                                                    
+                                                    g.addPath(6, 16, 0);
+                                                                    
+                                                    g.addPath(16, 25, 0);
+                                                                    
+                                                    g.addPath(25, 29, 0);
+                                                                    
+                                                    g.addPath(29, 41, 0);
+                                                                    
+                                                    g.addPath(41, 78, 0);
+                                                                    
+                                                    g.addPath(78, 79, 0);
+                                                                    
+                                                    g.addPath(79, 80, 0);
+                                                                    
+                                                    g.addPath(80, 81, 0);
+                                                                    
+                                                                                                        
+                                                    g.addPath(0, 6, 0);
+                                                                    
+                                                    g.addPath(6, 16, 0);
+                                                                    
+                                                    g.addPath(16, 25, 0);
+                                                                    
+                                                    g.addPath(25, 29, 0);
+                                                                    
+                                                    g.addPath(29, 79, 0);
+                                                                    
+                                                    g.addPath(79, 80, 0);
+                                                                    
+                                                    g.addPath(80, 81, 0);
+                                                                    
+                                                                                                        
+                                                    g.addPath(0, 6, 1);
+                                                                    
+                                                    g.addPath(6, 16, 1);
+                                                                    
+                                                    g.addPath(16, 25, 1);
+                                                                    
+                                                    g.addPath(25, 80, 1);
+                                                                    
+                                                    g.addPath(80, 81, 1);
+                                                                    
+                                                                                                        
+                                                    g.addPath(0, 6, 0);
+                                                                    
+                                                    g.addPath(6, 25, 0);
+                                                                    
+                                                    g.addPath(25, 29, 0);
+                                                                    
+                                                    g.addPath(29, 41, 0);
+                                                                    
+                                                    g.addPath(41, 53, 0);
+                                                                    
+                                                    g.addPath(53, 65, 0);
+                                                                    
+                                                                                                        
+                                                    g.addPath(0, 6, 1);
+                                                                    
+                                                    g.addPath(6, 25, 1);
+                                                                    
+                                                    g.addPath(25, 29, 1);
+                                                                    
+                                                    g.addPath(29, 41, 1);
+                                                                    
+                                                    g.addPath(41, 53, 1);
+                                                                    
+                                                    g.addPath(53, 74, 1);
+                                                                    
+                                                    g.addPath(74, 78, 1);
+                                                                    
+                                                    g.addPath(78, 79, 1);
+                                                                    
+                                                    g.addPath(79, 80, 1);
+                                                                    
+                                                    g.addPath(80, 81, 1);
+                                                                    
+                                                                                                        
+                                                    g.addPath(0, 6, 1);
+                                                                    
+                                                    g.addPath(6, 25, 1);
+                                                                    
+                                                    g.addPath(25, 29, 1);
+                                                                    
+                                                    g.addPath(29, 41, 1);
+                                                                    
+                                                    g.addPath(41, 78, 1);
+                                                                    
+                                                    g.addPath(78, 79, 1);
+                                                                    
+                                                    g.addPath(79, 80, 1);
+                                                                    
+                                                    g.addPath(80, 81, 1);
+                                                                    
+                                                                                                        
+                                                    g.addPath(0, 6, 1);
+                                                                    
+                                                    g.addPath(6, 25, 1);
+                                                                    
+                                                    g.addPath(25, 29, 1);
+                                                                    
+                                                    g.addPath(29, 79, 1);
+                                                                    
+                                                    g.addPath(79, 80, 1);
+                                                                    
+                                                    g.addPath(80, 81, 1);
+                                                                    
+                                                                                                        
+                                                    g.addPath(0, 6, 0);
+                                                                    
+                                                    g.addPath(6, 25, 0);
+                                                                    
+                                                    g.addPath(25, 80, 0);
+                                                                    
+                                                    g.addPath(80, 81, 0);
+                                                                    
+                                                                                                        
+                                                    g.addPath(0, 81, 1);
+                                                                    
+                                                            
+                g.render();
+            </script>
+            </div>
+    </div>
+
+    <footer class="row">
+        <div class="col-lg-12">
+            <small class="pull-right">Powered by <a href="http://atoum.org"><img src="assets/logo.png" alt="atoum"/></a></small>
+        </div>
+    </footer>
+</div>
+
+<script>
+    $(function() {
+        $('table.sort').tablesorter();
+    })
+</script>
+
+</body>
+
+</html>
