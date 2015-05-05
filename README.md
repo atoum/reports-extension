@@ -33,6 +33,8 @@ $runner->addExtension(new reports\extension($script));
 
 ### HTML coverage report
 
+**Check out the demo report generated with atoum's test suite: [http://atoum.github.io/reports-extension/](http://atoum.github.io/reports-extension/)**
+
 Add the following code to you configuration file :
 
 ```php
