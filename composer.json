@@ -16,7 +16,7 @@
         "symfony/filesystem": "~2.6.6"
     },
     "require-dev": {
-        "atoum/atoum": "dev-branch-path-coverage as 2.1.0"
+        "atoum/atoum": "~2.1"
     },
     "autoload": {
         "psr-4": {
