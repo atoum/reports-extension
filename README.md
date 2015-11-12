@@ -71,5 +71,5 @@ Once done, just use the `-ebpc` command line flag or add the following line of c
 
 // .atoum.php
 
-$script->enableBranchAndPAthCoverage();
+$script->enableBranchAndPathCoverage();
 ```
