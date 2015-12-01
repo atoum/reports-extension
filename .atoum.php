@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
 
 use
 	mageekguy\atoum\reports,
@@ -14,6 +13,6 @@ $coverage->addWriter(new \mageekguy\atoum\writers\std\out());
 $coverage->setOutPutDirectory(__DIR__ . '/coverage');
 $runner->addReport($coverage);
 
-$script->enableBranchAndPAthCoverage();
+$script->enableBranchAndPathCoverage();
 $script->noCodeCoverageForClasses('mageekguy\atoum\reports\asynchronous');
 $script->noCodeCoverageForClasses('mageekguy\atoum\report');
