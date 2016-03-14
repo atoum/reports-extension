@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unitTest version="1">
+  <file path="foo">
+    <testCase name="method" duration="1000"/>
+    <testCase name="otherMethod" duration="1000">
+      <error message="Uncomplete class"><![CDATA[output]]></error>
+    </testCase>
+    <testCase name="thirdMethod" duration="1000">
+      <skipped message="class"><![CDATA[message]]></skipped>
+    </testCase>
+  </file>
+</unitTest>
