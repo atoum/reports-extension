@@ -17,4 +17,4 @@ before_script:
   - composer update $COMPOSER_PREFER
 
 script:
-  - vendor/bin/atoum --test-ext -p 'php -n'
+  - vendor/bin/atoum --test-ext -p 'php -n -ddate.timezone=UTC'
