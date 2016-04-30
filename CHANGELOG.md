@@ -1,3 +1,7 @@
+# 2.0.1 - 2015-04-30
+
+* [#5](https://github.com/atoum/reports-extension/pull/5) Fixed a bug with autoloader ([@jubianchi])
+
 # 2.0.0 - 2015-04-30
 
 * [#4](https://github.com/atoum/reports-extension/pull/4) Add telemetry report ([@jubianchi])
