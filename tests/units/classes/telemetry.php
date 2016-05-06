@@ -53,7 +53,8 @@ class telemetry extends atoum\test
 				$client = new \mock\GuzzleHttp\Client(),
 				$this->calling($client)->request->doesNothing,
 				$runner = new \mock\mageekguy\atoum\runner(),
-				$telemetry = $this->newTestedInstance($client)
+				$telemetry = $this->newTestedInstance($client),
+				$this->function->getenv = false
 			)
 			->if($this->function->uniqid = 'anon/' . ($project = uniqid()))
 			->when($this->testedInstance->handleEvent(atoum\runner::runStop, $runner))
@@ -63,6 +64,7 @@ class telemetry extends atoum\test
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
+					'environment' => 'unknown',
 					'vendor' => 'anon',
 					'project' => $project,
 					'metrics' => [
@@ -99,6 +101,7 @@ class telemetry extends atoum\test
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
+					'environment' => 'unknown',
 					'vendor' => $vendor,
 					'project' => $project,
 					'metrics' => [
@@ -134,6 +137,7 @@ class telemetry extends atoum\test
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
+					'environment' => 'unknown',
 					'vendor' => 'anon',
 					'project' => $project,
 					'metrics' => [
@@ -174,7 +178,8 @@ class telemetry extends atoum\test
 				$client = new \mock\GuzzleHttp\Client(),
 				$this->calling($client)->request->doesNothing,
 				$runner = new \mock\mageekguy\atoum\runner(),
-				$telemetry = $this->newTestedInstance($client)
+				$telemetry = $this->newTestedInstance($client),
+				$this->function->getenv = false
 			)
 			->if($this->function->uniqid = 'anon/' . ($project = uniqid()))
 			->when(
@@ -187,6 +192,7 @@ class telemetry extends atoum\test
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
+					'environment' => 'unknown',
 					'vendor' => 'anon',
 					'project' => $project,
 					'metrics' => [
@@ -221,6 +227,7 @@ class telemetry extends atoum\test
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
+					'environment' => 'unknown',
 					'vendor' => 'anon',
 					'project' => $project,
 					'metrics' => [
@@ -255,6 +262,7 @@ class telemetry extends atoum\test
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
+					'environment' => 'unknown',
 					'vendor' => 'anon',
 					'project' => $project,
 					'metrics' => [
@@ -290,6 +298,7 @@ class telemetry extends atoum\test
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
+					'environment' => 'unknown',
 					'vendor' => 'anon',
 					'project' => $project,
 					'metrics' => [

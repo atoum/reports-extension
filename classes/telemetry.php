@@ -120,6 +120,7 @@ class telemetry extends asynchronous
 				'atoum' => $this->score->getAtoumVersion(),
 				'os' => php_uname('s') . ' ' . php_uname('r'),
 				'arch' => php_uname('m'),
+				'environment' => self::getCiEnvironment(),
 				'vendor' => $this->projectVendorName,
 				'project' => $this->projectName,
 				'metrics' => [
@@ -160,5 +161,35 @@ class telemetry extends asynchronous
 		}
 
 		return $this;
+	}
+
+	private static function getCiEnvironment()
+	{
+		switch (true)
+		{
+			case (bool) getenv('TRAVIS'):
+				return 'travis';
+
+			case (bool) getenv('APPVEYOR'):
+				return 'appveyor';
+
+			case (bool) getenv('CIRCLECI'):
+				return 'circleci';
+
+			case (bool) getenv('SEMAPHORE'):
+				return 'semaphore';
+
+			case (bool) getenv('JENKINS_URL'):
+				return 'jenkins';
+
+			case (bool) getenv('GITLAB_CI'):
+				return 'gitlabci';
+
+			case (bool) getenv('CI'):
+				return 'ci';
+
+			default:
+				return 'unknown';
+		}
 	}
 }
