@@ -1,3 +1,7 @@
+# 2.1.0 - 2015-05-06
+
+* [#7](https://github.com/atoum/reports-extension/pull/7) Update dependencies ([@jubianchi])
+
 # 2.0.1 - 2015-04-30
 
 * [#5](https://github.com/atoum/reports-extension/pull/5) Fixed a bug with autoloader ([@jubianchi])

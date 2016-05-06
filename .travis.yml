@@ -7,9 +7,14 @@ php:
 
 sudo: false
 
+env:
+  matrix:
+    - COMPOSER_PREFER="--prefer-stable"
+    - COMPOSER_PREFER="--prefer-lowest"
+
 before_script:
   - php -v
-  - composer install
+  - composer update $COMPOSER_PREFER
 
 script:
   - vendor/bin/atoum --test-ext -p 'php -n'
