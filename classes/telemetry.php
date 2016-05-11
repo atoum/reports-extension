@@ -185,6 +185,9 @@ class telemetry extends asynchronous
 			case (bool) getenv('GITLAB_CI'):
 				return 'gitlabci';
 
+			case (bool) getenv('CONTINUOUSPHP'):
+				return 'continuousphp';
+
 			case (bool) getenv('CI'):
 				return 'ci';
 
