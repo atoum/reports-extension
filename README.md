@@ -56,8 +56,9 @@ $runner->addReport($telemetry);
 ```
 
 Now, each time your run your test suite, atoum will collect data and send them to the telemtry. By default, **everything is
-sent anonymously**: a random project name will be generated and we'll only collect metrics. If you want to let us know who you are, add
-the following lines to your configuration file:
+sent anonymously**: a random project name will be generated and we'll only collect metrics. 
+
+If you want to let us know who you are, add the following lines to your configuration file:
 
 ```php
 <?php 
@@ -69,7 +70,16 @@ $telemetry->readProjectNameFromComposerJson(__DIR__ . '/composer.json');
 $telemetry->setProjectName('my/project');
 ```
 
-The project name **must** be composer compliant.
+_The project name **must** be composer compliant._
+
+With this configuration, atoum will send us everything about your project: the vendor name and the project name. If 
+you want to keep the latter secret so we only collect the vendor name, you can add the following line:
+
+```php
+<?php
+
+$telemetry->sendAnonymousProjectName();
+```
 
 ### HTML coverage report
 

@@ -16,6 +16,7 @@ class telemetry extends asynchronous
 	protected $testClassNumber = 0;
 	protected $testMethodNumber = 0;
 	protected $isAnonymous = true;
+	protected $isAnonymousProject = false;
 	protected $projectFullName;
 	protected $projectVendorName;
 	protected $projectName;
@@ -87,6 +88,15 @@ class telemetry extends asynchronous
 	public function sendAnonymousReport()
 	{
 		$this->isAnonymous = true;
+
+		return $this;
+	}
+
+	public function sendAnonymousProjectName()
+	{
+		$this->isAnonymousProject = true;
+
+		return $this;
 	}
 
 	public function handleEvent($event, atoum\observable $observable)
@@ -113,6 +123,11 @@ class telemetry extends asynchronous
 			if (($this->isAnonymous === true && $this->projectFullName !== null) || $this->projectFullName === null)
 			{
 				$this->setProjectName(uniqid('anon/', true));
+			}
+
+			if ($this->isAnonymousProject === true)
+			{
+				$this->setProjectName($this->projectVendorName . '/anon-' . md5($this->projectFullName));
 			}
 
 			$report = [

@@ -171,6 +171,55 @@ class telemetry extends atoum\test
 		;
 	}
 
+	public function testSendAnonymousProjectName()
+	{
+		$this
+			->given(
+				$client = new \mock\GuzzleHttp\Client(),
+				$this->calling($client)->request->doesNothing,
+				$runner = new \mock\mageekguy\atoum\runner(),
+				$telemetry = $this->newTestedInstance($client),
+				$this->function->getenv = false
+			)
+			->if(
+				$this->testedInstance->setProjectName('atoum/reports-extension'),
+				$this->testedInstance->sendAnonymousProjectName()
+			)
+			->when($this->testedInstance->handleEvent(atoum\runner::runStop, $runner))
+			->then
+				->mock($client)->call('request')->withArguments('POST', testedClass::defaultUrl, ['body' => json_encode([
+					'php' => null,
+					'atoum' => null,
+					'os' => php_uname('s') . ' ' . php_uname('r'),
+					'arch' => php_uname('m'),
+					'environment' => 'unknown',
+					'vendor' => 'atoum',
+					'project' => 'anon-' . md5('atoum/reports-extension'),
+					'metrics' => [
+						'classes' => 0,
+						'methods' => [
+							'total' => 0,
+							'void' => 0,
+							'uncomplete' => 0,
+							'skipped' => 0,
+							'failed' => 0,
+							'errored' => 0,
+							'exception' => 0,
+						],
+						'assertions' => [
+							'total' => 0,
+							'passed' => 0,
+							'failed' => 0
+						],
+						'exceptions' => 0,
+						'errors' => 0,
+						'duration' => 0,
+						'memory' => 0
+					]
+				])])->once
+		;
+	}
+
 	public function testHandleEvent()
 	{
 		$this
