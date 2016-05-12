@@ -373,6 +373,89 @@ class telemetry extends atoum\test
 					]
 				])])->once
 			->given(
+				$score = new atoum\runner\score(),
+				$coverage = new \mock\mageekguy\atoum\score\coverage(),
+				$this->calling($coverage)->getValue = $coverageValue = rand(0, 100),
+				$score->setCoverage($coverage)
+			)
+			->if($runner->setScore($score))
+			->when($this->testedInstance->handleEvent(atoum\runner::runStop, $runner))
+			->then
+				->mock($client)->call('request')->withArguments('POST', testedClass::defaultUrl, ['body' => json_encode([
+					'php' => null,
+					'atoum' => null,
+					'os' => php_uname('s') . ' ' . php_uname('r'),
+					'arch' => php_uname('m'),
+					'environment' => 'unknown',
+					'vendor' => 'anon',
+					'project' => $project,
+					'metrics' => [
+						'classes' => 2,
+						'methods' => [
+							'total' => 3,
+							'void' => 0,
+							'uncomplete' => 0,
+							'skipped' => 0,
+							'failed' => 0,
+							'errored' => 0,
+							'exception' => 0,
+						],
+						'assertions' => [
+							'total' => 0,
+							'passed' => 0,
+							'failed' => 0
+						],
+						'exceptions' => 0,
+						'errors' => 0,
+						'duration' => 0,
+						'memory' => 0,
+						'coverage' => [
+							'lines' => $coverageValue
+						]
+					]
+				])])->once
+			->given(
+				$this->calling($coverage)->getBranchesCoverageValue = $branchesCoverageValue = rand(0, 100),
+				$this->calling($coverage)->getPathsCoverageValue = $pathsCoverageValue = rand(0, 100)
+			)
+				->when($this->testedInstance->handleEvent(atoum\runner::runStop, $runner))
+			->then
+				->mock($client)->call('request')->withArguments('POST', testedClass::defaultUrl, ['body' => json_encode([
+					'php' => null,
+					'atoum' => null,
+					'os' => php_uname('s') . ' ' . php_uname('r'),
+					'arch' => php_uname('m'),
+					'environment' => 'unknown',
+					'vendor' => 'anon',
+					'project' => $project,
+					'metrics' => [
+						'classes' => 2,
+						'methods' => [
+							'total' => 3,
+							'void' => 0,
+							'uncomplete' => 0,
+							'skipped' => 0,
+							'failed' => 0,
+							'errored' => 0,
+							'exception' => 0,
+						],
+						'assertions' => [
+							'total' => 0,
+							'passed' => 0,
+							'failed' => 0
+						],
+						'exceptions' => 0,
+						'errors' => 0,
+						'duration' => 0,
+						'memory' => 0,
+						'coverage' => [
+							'lines' => $coverageValue,
+							'branches' => $branchesCoverageValue,
+							'paths' => $pathsCoverageValue
+						]
+					]
+				])])->once
+			->given(
 				$request = new \mock\Psr\Http\Message\RequestInterface(),
 				$response = new \mock\Psr\Http\Message\ResponseInterface(),
 				$this->calling($response)->getStatusCode = $code = rand(400, 599),
