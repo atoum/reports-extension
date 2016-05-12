@@ -1,5 +1,6 @@
 # 2.2.0 - 2015-05-12
 
+* [#12](https://github.com/atoum/reports-extension/pull/12) Add coverage values in telemtry report ([@jubianchi])
 * [#11](https://github.com/atoum/reports-extension/pull/11) Anonymize only project name ([@jubianchi])
 * [#3](https://github.com/atoum/reports-extension/pull/3) Add xUnit and clover reports for Sonar ([@vonglasow])
 * [#10](https://github.com/atoum/reports-extension/pull/10) Add continuousphp to CI environments ([@ppaulis])

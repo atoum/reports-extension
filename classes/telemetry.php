@@ -21,6 +21,7 @@ class telemetry extends asynchronous
 	protected $projectVendorName;
 	protected $projectName;
 	protected $telemetryUrl;
+	protected $reportIsDisabled;
 
 	public function __construct(Client $client = null)
 	{
@@ -157,9 +158,31 @@ class telemetry extends asynchronous
 					'exceptions' => $this->score->getExceptionNumber(),
 					'errors' => $this->score->getErrorNumber(),
 					'duration' => $this->score->getTotalDuration(),
-					'memory' => $this->score->getTotalMemoryUsage(),
+					'memory' => $this->score->getTotalMemoryUsage()
 				]
 			];
+
+			$coverage = $this->score->getCoverage();
+
+			if ($coverage->getValue() !== null || $coverage->getBranchesCoverageValue() !== null || $coverage->getPathsCoverageValue() !== null)
+			{
+				$report['metrics']['coverage'] = [];
+
+				if ($coverage->getValue() !== null)
+				{
+					$report['metrics']['coverage']['lines'] = $coverage->getValue();
+				}
+
+				if ($coverage->getBranchesCoverageValue() !== null)
+				{
+					$report['metrics']['coverage']['branches'] = $coverage->getBranchesCoverageValue();
+				}
+
+				if ($coverage->getPathsCoverageValue() !== null)
+				{
+					$report['metrics']['coverage']['paths'] = $coverage->getPathsCoverageValue();
+				}
+			}
 
 			try
 			{
