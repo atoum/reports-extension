@@ -133,7 +133,8 @@ class telemetry extends asynchronous
 
 			$report = [
 				'php' => $this->score->getPhpVersion(),
-				'atoum' => $this->score->getAtoumVersion(),
+				'framework' => 'atoum',
+				'version' => $this->score->getAtoumVersion(),
 				'os' => php_uname('s') . ' ' . php_uname('r'),
 				'arch' => php_uname('m'),
 				'environment' => self::getEnvironment(),
