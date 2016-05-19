@@ -25,5 +25,10 @@
             "mageekguy\\atoum\\reports\\": "classes"
         },
         "files": ["autoloader.php"]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.x-dev"
+        }
     }
 }
