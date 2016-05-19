@@ -1,3 +1,7 @@
+# `dev-master` (2.x-dev)
+
+* [#14](https://github.com/atoum/reports-extension/pull/14) Add Atom, PHPStorm and Vim to telemetry environments ([@jubianchi])
+
 # 2.2.0 - 2015-05-12
 
 * [#11](https://github.com/atoum/reports-extension/pull/11) Anonymize only project name ([@jubianchi])
