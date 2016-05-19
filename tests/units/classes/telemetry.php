@@ -28,21 +28,28 @@ class telemetry extends atoum\test
 	{
 		$this
 			->given(
-				$client = new \mock\GuzzleHttp\Client(),
-				$this->calling($client)->request->doesNothing,
+				$http = new \mock\mageekguy\atoum\writers\http(),
+				$this->calling($http)->write->doesNothing,
 				$runner = new \mock\mageekguy\atoum\runner(),
-				$telemetry = $this->newTestedInstance($client)
+				$telemetry = $this->newTestedInstance($http)
 			)
 			->when($this->testedInstance->handleEvent(atoum\runner::runStop, $runner))
 			->then
-				->mock($client)->call('request')->withArguments('POST', testedClass::defaultUrl)->once
+				->mock($http)
+					->call('setUrl')->withArguments(testedClass::defaultUrl)->once
+					->call('setMethod')->withArguments('POST')->once
+					->call('write')->once
 			->if(
+				$this->resetMock($http),
 				$url = uniqid(),
 				$this->testedInstance->setTelemetryUrl($url)
 			)
 			->when($this->testedInstance->handleEvent(atoum\runner::runStop, $runner))
 			->then
-				->mock($client)->call('request')->withArguments('POST', $url)->once
+				->mock($http)
+					->call('setUrl')->withArguments($url)->once
+					->call('setMethod')->withArguments('POST')->once
+					->call('write')->once
 		;
 	}
 
@@ -50,16 +57,16 @@ class telemetry extends atoum\test
 	{
 		$this
 			->given(
-				$client = new \mock\GuzzleHttp\Client(),
-				$this->calling($client)->request->doesNothing,
+				$http = new \mock\mageekguy\atoum\writers\http(),
+				$this->calling($http)->write->doesNothing,
 				$runner = new \mock\mageekguy\atoum\runner(),
-				$telemetry = $this->newTestedInstance($client),
+				$telemetry = $this->newTestedInstance($http),
 				$this->function->getenv = false
 			)
 			->if($this->function->uniqid = 'anon/' . ($project = uniqid()))
 			->when($this->testedInstance->handleEvent(atoum\runner::runStop, $runner))
 			->then
-				->mock($client)->call('request')->withArguments('POST', testedClass::defaultUrl, ['body' => json_encode([
+				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
@@ -88,7 +95,7 @@ class telemetry extends atoum\test
 						'duration' => 0,
 						'memory' => 0
 					]
-				])])->once
+				]))->once
 			->if(
 				$vendor = uniqid(),
 				$project = uniqid(),
@@ -96,7 +103,7 @@ class telemetry extends atoum\test
 			)
 			->when($this->testedInstance->handleEvent(atoum\runner::runStop, $runner))
 			->then
-				->mock($client)->call('request')->withArguments('POST', testedClass::defaultUrl, ['body' => json_encode([
+				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
@@ -125,14 +132,14 @@ class telemetry extends atoum\test
 						'duration' => 0,
 						'memory' => 0
 					]
-				])])->once
+				]))->once
 			->if(
 				$this->function->uniqid = 'anon/' . ($project = uniqid()),
 				$this->testedInstance->sendAnonymousReport()
 			)
 			->when($this->testedInstance->handleEvent(atoum\runner::runStop, $runner))
 			->then
-				->mock($client)->call('request')->withArguments('POST', testedClass::defaultUrl, ['body' => json_encode([
+				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
@@ -161,7 +168,7 @@ class telemetry extends atoum\test
 						'duration' => 0,
 						'memory' => 0
 					]
-				])])->once
+				]))->once
 			->exception(function($test) {
 					$test->testedInstance->setProjectName(uniqid());
 				}
@@ -175,10 +182,10 @@ class telemetry extends atoum\test
 	{
 		$this
 			->given(
-				$client = new \mock\GuzzleHttp\Client(),
-				$this->calling($client)->request->doesNothing,
+				$http = new \mock\mageekguy\atoum\writers\http(),
+				$this->calling($http)->write->doesNothing,
 				$runner = new \mock\mageekguy\atoum\runner(),
-				$telemetry = $this->newTestedInstance($client),
+				$telemetry = $this->newTestedInstance($http),
 				$this->function->getenv = false
 			)
 			->if(
@@ -187,7 +194,7 @@ class telemetry extends atoum\test
 			)
 			->when($this->testedInstance->handleEvent(atoum\runner::runStop, $runner))
 			->then
-				->mock($client)->call('request')->withArguments('POST', testedClass::defaultUrl, ['body' => json_encode([
+				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
@@ -216,7 +223,7 @@ class telemetry extends atoum\test
 						'duration' => 0,
 						'memory' => 0
 					]
-				])])->once
+				]))->once
 		;
 	}
 
@@ -224,10 +231,10 @@ class telemetry extends atoum\test
 	{
 		$this
 			->given(
-				$client = new \mock\GuzzleHttp\Client(),
-				$this->calling($client)->request->doesNothing,
+				$http = new \mock\mageekguy\atoum\writers\http(),
+				$this->calling($http)->write->doesNothing,
 				$runner = new \mock\mageekguy\atoum\runner(),
-				$telemetry = $this->newTestedInstance($client),
+				$telemetry = $this->newTestedInstance($http),
 				$this->function->getenv = false
 			)
 			->if($this->function->uniqid = 'anon/' . ($project = uniqid()))
@@ -236,7 +243,7 @@ class telemetry extends atoum\test
 				$this->testedInstance->handleEvent(atoum\runner::runStop, $runner)
 			)
 			->then
-				->mock($client)->call('request')->withArguments('POST', testedClass::defaultUrl, ['body' => json_encode([
+				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
@@ -265,13 +272,13 @@ class telemetry extends atoum\test
 						'duration' => 0,
 						'memory' => 0
 					]
-				])])->once
+				]))->once
 			->when(
 				$this->testedInstance->handleEvent(atoum\test::beforeTestMethod, $runner),
 				$this->testedInstance->handleEvent(atoum\runner::runStop, $runner)
 			)
 			->then
-				->mock($client)->call('request')->withArguments('POST', testedClass::defaultUrl, ['body' => json_encode([
+				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
@@ -300,13 +307,13 @@ class telemetry extends atoum\test
 						'duration' => 0,
 						'memory' => 0
 					]
-				])])->once
+				]))->once
 			->when(
 				$this->testedInstance->handleEvent(atoum\test::beforeTestMethod, $runner),
 				$this->testedInstance->handleEvent(atoum\runner::runStop, $runner)
 			)
 			->then
-				->mock($client)->call('request')->withArguments('POST', testedClass::defaultUrl, ['body' => json_encode([
+				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
@@ -335,14 +342,14 @@ class telemetry extends atoum\test
 						'duration' => 0,
 						'memory' => 0
 					]
-				])])->once
+				]))->once
 			->when(
 				$this->testedInstance->handleEvent(atoum\test::runStart, $runner),
 				$this->testedInstance->handleEvent(atoum\test::beforeTestMethod, $runner),
 				$this->testedInstance->handleEvent(atoum\runner::runStop, $runner)
 			)
 			->then
-				->mock($client)->call('request')->withArguments('POST', testedClass::defaultUrl, ['body' => json_encode([
+				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
@@ -371,7 +378,7 @@ class telemetry extends atoum\test
 						'duration' => 0,
 						'memory' => 0
 					]
-				])])->once
+				]))->once
 			->given(
 				$score = new atoum\runner\score(),
 				$coverage = new \mock\mageekguy\atoum\score\coverage(),
@@ -381,7 +388,7 @@ class telemetry extends atoum\test
 			->if($runner->setScore($score))
 			->when($this->testedInstance->handleEvent(atoum\runner::runStop, $runner))
 			->then
-				->mock($client)->call('request')->withArguments('POST', testedClass::defaultUrl, ['body' => json_encode([
+				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
@@ -413,14 +420,14 @@ class telemetry extends atoum\test
 							'lines' => $coverageValue
 						]
 					]
-				])])->once
+				]))->once
 			->given(
 				$this->calling($coverage)->getBranchesCoverageValue = $branchesCoverageValue = rand(0, 100),
 				$this->calling($coverage)->getPathsCoverageValue = $pathsCoverageValue = rand(0, 100)
 			)
-				->when($this->testedInstance->handleEvent(atoum\runner::runStop, $runner))
+			->when($this->testedInstance->handleEvent(atoum\runner::runStop, $runner))
 			->then
-				->mock($client)->call('request')->withArguments('POST', testedClass::defaultUrl, ['body' => json_encode([
+				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
 					'atoum' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
@@ -454,18 +461,13 @@ class telemetry extends atoum\test
 							'paths' => $pathsCoverageValue
 						]
 					]
-				])])->once
-			->given(
-				$request = new \mock\Psr\Http\Message\RequestInterface(),
-				$response = new \mock\Psr\Http\Message\ResponseInterface(),
-				$this->calling($response)->getStatusCode = $code = rand(400, 599),
-				$exception = new \mock\GuzzleHttp\Exception\RequestException(uniqid(), $request, $response)
-			)
-			->if($this->calling($client)->request->throw = $exception)
+				]))->once
+			->given($exception = new \mageekguy\atoum\writers\http\exception())
+			->if($this->calling($http)->write->throw = $exception)
 			->when($this->testedInstance->handleEvent(atoum\runner::runStop, $runner))
 			->then
-				->castToString($this->testedInstance)->isEqualTo('Unable to send your report to the telemetry: HTTP ' . $code . PHP_EOL)
-			->if($this->calling($client)->request->doesNothing)
+				->castToString($this->testedInstance)->isEqualTo('Unable to send your report to the telemetry.' . PHP_EOL)
+			->if($this->calling($http)->write->doesNothing)
 			->when($this->testedInstance->handleEvent(atoum\runner::runStop, $runner))
 			->then
 				->castToString($this->testedInstance)->isEqualTo('Your report has been sent to the telemetry. Thanks for sharing it with us!' . PHP_EOL)
