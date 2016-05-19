@@ -12,10 +12,9 @@
         }
     ],
     "require": {
-        "php": ">=5.5.0",
+        "php": ">=5.4.0",
         "twig/twig": "^1.18",
-        "symfony/filesystem": "^2.6 | ^3.0",
-        "guzzlehttp/guzzle": "^6.2"
+        "symfony/filesystem": "^2.6 | ^3.0"
     },
     "require-dev": {
         "atoum/atoum": "^2.5.1"

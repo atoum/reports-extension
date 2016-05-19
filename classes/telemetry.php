@@ -11,7 +11,7 @@ class telemetry extends asynchronous
 {
 	const defaultUrl = 'https://telemetry.atoum.org';
 
-	protected $client;
+	protected $http;
 	protected $score;
 	protected $testClassNumber = 0;
 	protected $testMethodNumber = 0;
@@ -23,12 +23,12 @@ class telemetry extends asynchronous
 	protected $telemetryUrl;
 	protected $reportIsDisabled;
 
-	public function __construct(Client $client = null)
+	public function __construct(atoum\writers\http $http = null)
 	{
 		parent::__construct();
 
 		$this->setTelemetryUrl();
-		$this->client = $client ?: new Client();
+		$this->http = $http ?: new atoum\writers\http();
 	}
 
 	public function setTelemetryUrl($url = null)
@@ -186,13 +186,17 @@ class telemetry extends asynchronous
 
 			try
 			{
-				$this->client->request('POST', $this->telemetryUrl, ['body' => json_encode($report)]);
+				$this->http
+					->setUrl($this->telemetryUrl)
+					->setMethod('POST')
+					->write(json_encode($report))
+				;
 
 				$this->string = 'Your report has been sent to the telemetry. Thanks for sharing it with us!';
 			}
-			catch(RequestException $exception)
+			catch(atoum\writers\http\exception $exception)
 			{
-				$this->string = 'Unable to send your report to the telemetry: HTTP ' . $exception->getCode();
+				$this->string = 'Unable to send your report to the telemetry.';
 			}
 
 			$this->string .= PHP_EOL;
