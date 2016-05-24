@@ -1,3 +1,7 @@
+# 2.3.1 - 2016-05-24
+
+* [#17](https://github.com/atoum/reports-extension/pull/17) Fix autoloader with Symfony 3 ([@jubianchi])
+
 # 2.3.0 - 2016-05-24
 
 * [#15](https://github.com/atoum/reports-extension/pull/15) Remove dependency on Guzzle and restore PHP 5.4 support ([@jubianchi])
