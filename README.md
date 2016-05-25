@@ -124,3 +124,21 @@ Once done, just use the `-ebpc` command line flag or add the following line of c
 
 $script->enableBranchAndPathCoverage();
 ```
+
+### Sonar coverage report
+
+To add generic code coverage for sonar.
+
+```php
+$xunit = new \mageekguy\atoum\reports\sonar\xunit();
+$writer = new \mageekguy\atoum\writers\file('./sonar-xunit.xml');
+$xunit->addWriter($writer);
+$runner->addReport($xunit);
+
+$clover = new \mageekguy\atoum\reports\sonar\clover();
+$writer = new \mageekguy\atoum\writers\file('./sonar-clover.xml');
+$clover->addWriter($writer);
+$runner->addReport($clover);
+```
+
+and add report generate to `sonar.genericcoverage` properties
