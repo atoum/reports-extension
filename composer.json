@@ -26,7 +26,7 @@
         "files": ["autoloader.php"]
     },
     "autoload-dev": {
-        "files": ["autoloader.php"]
+        "files": ["tests/autoloader.php"]
     },
     "extra": {
         "branch-alias": {
