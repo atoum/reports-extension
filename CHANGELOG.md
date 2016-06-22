@@ -1,3 +1,7 @@
+# 2.3.2 - 2016-06-22
+
+* [#19](https://github.com/atoum/reports-extension/pull/19) Fix dev autoloader ([@jubianchi])
+
 # 2.3.1 - 2016-05-24
 
 * [#17](https://github.com/atoum/reports-extension/pull/17) Fix autoloader with Symfony 3 ([@jubianchi])

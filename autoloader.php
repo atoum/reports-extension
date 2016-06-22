@@ -42,5 +42,3 @@ require_once $vendorDir . DIRECTORY_SEPARATOR . 'twig' . DIRECTORY_SEPARATOR . '
 
 $twigAutoloader = new \Twig_Autoloader();
 $twigAutoloader->register();
-
-require_once __DIR__ . DIRECTORY_SEPARATOR .'tests' . DIRECTORY_SEPARATOR . 'autoloader.php';

@@ -25,6 +25,9 @@
         },
         "files": ["autoloader.php"]
     },
+    "autoload-dev": {
+        "files": ["autoloader.php"]
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "2.x-dev"
