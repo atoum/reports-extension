@@ -68,7 +68,8 @@ class telemetry extends atoum\test
 			->then
 				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
-					'atoum' => null,
+					'framework' => 'atoum',
+					'version' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
 					'environment' => 'unknown',
@@ -105,7 +106,8 @@ class telemetry extends atoum\test
 			->then
 				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
-					'atoum' => null,
+					'framework' => 'atoum',
+					'version' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
 					'environment' => 'unknown',
@@ -141,7 +143,8 @@ class telemetry extends atoum\test
 			->then
 				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
-					'atoum' => null,
+					'framework' => 'atoum',
+					'version' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
 					'environment' => 'unknown',
@@ -196,7 +199,8 @@ class telemetry extends atoum\test
 			->then
 				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
-					'atoum' => null,
+					'framework' => 'atoum',
+					'version' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
 					'environment' => 'unknown',
@@ -245,7 +249,8 @@ class telemetry extends atoum\test
 			->then
 				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
-					'atoum' => null,
+					'framework' => 'atoum',
+					'version' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
 					'environment' => 'unknown',
@@ -280,7 +285,8 @@ class telemetry extends atoum\test
 			->then
 				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
-					'atoum' => null,
+					'framework' => 'atoum',
+					'version' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
 					'environment' => 'unknown',
@@ -315,7 +321,8 @@ class telemetry extends atoum\test
 			->then
 				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
-					'atoum' => null,
+					'framework' => 'atoum',
+					'version' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
 					'environment' => 'unknown',
@@ -351,7 +358,8 @@ class telemetry extends atoum\test
 			->then
 				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
-					'atoum' => null,
+					'framework' => 'atoum',
+					'version' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
 					'environment' => 'unknown',
@@ -390,7 +398,8 @@ class telemetry extends atoum\test
 			->then
 				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
-					'atoum' => null,
+					'framework' => 'atoum',
+					'version' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
 					'environment' => 'unknown',
@@ -429,7 +438,8 @@ class telemetry extends atoum\test
 			->then
 				->mock($http)->call('write')->withArguments(json_encode([
 					'php' => null,
-					'atoum' => null,
+					'framework' => 'atoum',
+					'version' => null,
 					'os' => php_uname('s') . ' ' . php_uname('r'),
 					'arch' => php_uname('m'),
 					'environment' => 'unknown',

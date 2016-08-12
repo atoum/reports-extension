@@ -8,6 +8,7 @@
 
 # 2.3.0 - 2016-05-24
 
+* [#16](https://github.com/atoum/reports-extension/pull/16) Send the framework and version tags to the telemetry ([@jubianchi])
 * [#15](https://github.com/atoum/reports-extension/pull/15) Remove dependency on Guzzle and restore PHP 5.4 support ([@jubianchi])
 * [#14](https://github.com/atoum/reports-extension/pull/14) Add Atom, PHPStorm and Vim to telemetry environments ([@jubianchi])
 
