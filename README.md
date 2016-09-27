@@ -15,6 +15,12 @@ Install extension using [composer](https://getcomposer.org):
 
 ```
 
+### After atoum 2.8
+
+On atoum >=2.8 the extension will self-register on atoum. So you don't need to do anything else.
+
+### Before atoum 2.8
+
 Enable the extension using atoum configuration file:
 
 ```php

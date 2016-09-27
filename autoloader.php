@@ -42,3 +42,9 @@ require_once $vendorDir . DIRECTORY_SEPARATOR . 'twig' . DIRECTORY_SEPARATOR . '
 
 $twigAutoloader = new \Twig_Autoloader();
 $twigAutoloader->register();
+
+if (defined('mageekguy\atoum\scripts\runner') === true) {
+	\mageekguy\atoum\scripts\runner::addConfigurationCallable(function($script, $runner) {
+		$runner->addExtension(new \mageekguy\atoum\reports\extension($script));
+	});
+}
