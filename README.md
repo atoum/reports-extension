@@ -1,6 +1,6 @@
 # atoum reports extension [![Build Status](https://travis-ci.org/atoum/reports-extension.svg?branch=master)](https://travis-ci.org/atoum/reports-extension)
 
-![atoum](http://downloads.atoum.org/images/logo.png)
+![atoum](http://atoum.org/images/logo/atoum.png)
 
 ## Install it
 
