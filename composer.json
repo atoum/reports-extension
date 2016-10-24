@@ -2,7 +2,7 @@
     "name": "atoum/reports-extension",
     "type": "library",
     "description": "atoum Reports extension",
-    "keywords": ["TDD","atoum","test","unit testing","reports"],
+    "keywords": ["TDD","atoum","test","unit testing","reports", "atoum-extension"],
     "homepage": "http://www.atoum.org",
     "license": "BSD",
     "authors": [
