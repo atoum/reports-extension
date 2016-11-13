@@ -11,19 +11,26 @@
             "email": "contact@jubianchi.fr"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/jubianchi/atoum"
+        }
+    ],
     "require": {
         "php": ">=5.4.0",
+        "atoum/atoum": "dev-runner-auto-conf@dev",
         "twig/twig": "^1.18",
         "symfony/filesystem": "^2.6 | ^3.0"
-    },
-    "require-dev": {
-        "atoum/atoum": "^2.5.1"
     },
     "autoload": {
         "psr-4": {
             "mageekguy\\atoum\\reports\\": "classes"
         },
-        "files": ["autoloader.php"]
+        "files": [
+            "autoloader.php",
+            "configuration.php"
+        ]
     },
     "autoload-dev": {
         "files": ["tests/autoloader.php"]

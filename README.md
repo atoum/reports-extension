@@ -9,13 +9,13 @@ Install extension using [composer](https://getcomposer.org):
 ```json
 {
     "require-dev": {
-        "atoum/reports-extension": "~1.0"
+        "atoum/reports-extension": "^2.0.0"
     }
 }
 
 ```
 
-Enable the extension using atoum configuration file:
+The extension will be automatically loaded. If you ever want to unload it, you can add this to your configuration file:
 
 ```php
 <?php
@@ -26,9 +26,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'a
 
 use mageekguy\atoum\reports;
 
-$extension = new reports\extension($script);
-
-$extension->addToRunner($runner);
+$runner->removeExtension(reports\extension::class);
 ```
 
 ## Use it

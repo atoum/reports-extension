@@ -2,13 +2,11 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
 
 use
-	mageekguy\atoum\reports,
 	mageekguy\atoum\reports\coverage,
 	mageekguy\atoum\reports\telemetry,
 	mageekguy\atoum\writers\std
 ;
 
-$runner->addExtension(new reports\extension($script));
 $script->addDefaultReport();
 
 $coverage = new coverage\html();
