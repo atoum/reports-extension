@@ -8,6 +8,10 @@ php:
 
 sudo: false
 
+cache:
+  directories:
+    - vendor
+
 env:
   matrix:
     - COMPOSER_PREFER="--prefer-stable"
