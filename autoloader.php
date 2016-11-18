@@ -37,6 +37,3 @@ atoum\autoloader::get()
 	->addDirectory(__NAMESPACE__, __DIR__ . DIRECTORY_SEPARATOR . 'classes')
 	->addDirectory('Symfony\Component\Filesystem', $filesystemDir)
 ;
-
-$twigAutoloader = new \Twig_Autoloader();
-$twigAutoloader->register();
