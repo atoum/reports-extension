@@ -25,6 +25,8 @@ pre {
     background-color: transparent;
     padding: 0;
     margin: 0;
+    border-radius: 0;
+    line-height: 1.8em;
 }
 
 pre .label, .panel-heading .label {
