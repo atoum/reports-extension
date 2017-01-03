@@ -1,18 +1,11 @@
-# atoum reports extension [![Build Status](https://travis-ci.org/atoum/reports-extension.svg?branch=master)](https://travis-ci.org/atoum/reports-extension)
-
-![atoum](http://atoum.org/images/logo/atoum.png)
+# atoum/reports-extension [![Build Status](https://travis-ci.org/atoum/reports-extension.svg?branch=master)](https://travis-ci.org/atoum/reports-extension)
 
 ## Install it
 
 Install extension using [composer](https://getcomposer.org):
 
-```json
-{
-    "require-dev": {
-        "atoum/reports-extension": "~1.0"
-    }
-}
-
+```
+composer require --dev atoum/reports-extension
 ```
 
 Enable the extension using atoum configuration file:
@@ -142,3 +135,9 @@ $runner->addReport($clover);
 ```
 
 and add report generate to `sonar.genericcoverage` properties
+
+## License
+
+reports-extension is released under the BSD-3-Clause License. See the bundled [LICENSE](LICENSE) file for details.
+
+![atoum](http://atoum.org/images/logo/atoum.png)
