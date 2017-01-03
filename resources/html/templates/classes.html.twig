@@ -2,47 +2,69 @@
 {% import 'macros.twig' as macros %}
 
 {% block content %}
+    {% set opsCoverageAvailable = coverage.ops is not null %}
+    {% set linesCoverageAvailable = coverage.lines is not null %}
+    {% set branchesCoverageAvailable = coverage.branches is not null %}
+    {% set pathsCoverageAvailable = coverage.paths is not null %}
+
+    {% set cells = 0 %}
+    {% set cells = cells + (opsCoverageAvailable ? 1 : 0) %}
+    {% set cells = cells + (linesCoverageAvailable ? 1 : 0) %}
+    {% set cells = cells + (branchesCoverageAvailable ? 1 : 0) %}
+    {% set cells = cells + (pathsCoverageAvailable ? 1 : 0) %}
+
     <div class="row">
         <h1>Code coverage report</h1>
 
         <table class="table table-bordered">
             <tr>
-                <td style="text-align: center; width: 25%">
-                    <h1 class="text-{{ macros.color(coverage.ops) }}">
-                        {{ coverage.ops is not null ? coverage.ops|round(2) * 100 ~ '%' : 'N/A' }}
-                        {% if coverage.ops is not null %}
-                            <small>of {{ coverage.totalOps }}</small>
-                        {% endif %}
-                    </h1>
-                    <strong>OPs</strong>
-                </td>
-                <td style="text-align: center; width: 25%">
-                    <h1 class="text-{{ macros.color(coverage.lines) }}">
-                        {{ coverage.lines is not null ? coverage.lines|round(2) * 100 ~ '%' : 'N/A' }}
-                        {% if coverage.lines is not null %}
-                            <small>of {{ coverage.totalLines }}</small>
-                        {% endif %}
-                    </h1>
-                    <strong>Lines</strong>
-                </td>
-                <td style="text-align: center; width: 25%">
-                    <h1 class="text-{{ macros.color(coverage.branches) }}">
-                        {{ coverage.branches is not null ? coverage.branches|round(2) * 100 ~ '%' : 'N/A' }}
-                        {% if coverage.branches is not null %}
-                            <small>of {{ coverage.totalBranches }}</small>
-                        {% endif %}
-                    </h1>
-                    <strong>Branches</strong>
-                </td>
-                <td style="text-align: center; width: 25%">
-                    <h1 class="text-{{ macros.color(coverage.paths) }}">
-                        {{ coverage.paths is not null ? coverage.paths|round(2) * 100 ~ '%' : 'N/A' }}
-                        {% if coverage.paths is not null %}
-                            <small>of {{ coverage.totalPaths }}</small>
-                        {% endif %}
-                    </h1>
-                    <strong>Paths</strong>
-                </td>
+                {% if opsCoverageAvailable %}
+                    <td style="text-align: center; width: {{ 100 / cells }}%">
+                        <h1 class="text-{{ macros.color(coverage.ops) }}">
+                            {{ coverage.ops is not null ? coverage.ops|round(2) * 100 ~ '%' : 'N/A' }}
+                            {% if coverage.ops is not null %}
+                                <small>of {{ coverage.totalOps }}</small>
+                            {% endif %}
+                        </h1>
+                        <strong>OPs</strong>
+                    </td>
+                {% endif %}
+
+                {% if linesCoverageAvailable %}
+                    <td style="text-align: center; width: {{ 100 / cells }}%">
+                        <h1 class="text-{{ macros.color(coverage.lines) }}">
+                            {{ coverage.lines is not null ? coverage.lines|round(2) * 100 ~ '%' : 'N/A' }}
+                            {% if coverage.lines is not null %}
+                                <small>of {{ coverage.totalLines }}</small>
+                            {% endif %}
+                        </h1>
+                        <strong>Lines</strong>
+                    </td>
+                {% endif %}
+
+                {% if branchesCoverageAvailable %}
+                    <td style="text-align: center; width: {{ 100 / cells }}%">
+                        <h1 class="text-{{ macros.color(coverage.branches) }}">
+                            {{ coverage.branches is not null ? coverage.branches|round(2) * 100 ~ '%' : 'N/A' }}
+                            {% if coverage.branches is not null %}
+                                <small>of {{ coverage.totalBranches }}</small>
+                            {% endif %}
+                        </h1>
+                        <strong>Branches</strong>
+                    </td>
+                {% endif %}
+
+                {% if pathsCoverageAvailable %}
+                    <td style="text-align: center; width: 25%">
+                        <h1 class="text-{{ macros.color(coverage.paths) }}">
+                            {{ coverage.paths is not null ? coverage.paths|round(2) * 100 ~ '%' : 'N/A' }}
+                            {% if coverage.paths is not null %}
+                                <small>of {{ coverage.totalPaths }}</small>
+                            {% endif %}
+                        </h1>
+                        <strong>Paths</strong>
+                    </td>
+                {% endif %}
             </tr>
         </table>
 
@@ -50,14 +72,22 @@
             <thead>
             <tr>
                 <th>Class <i class="fa"></i></th>
-                <th style="text-align: center">OPs <i class="fa"></i></th>
-                <th style="text-align: center">OPs % <i class="fa"></i></th>
-                <th style="text-align: center">Lines <i class="fa"></i></th>
-                <th style="text-align: center">Lines % <i class="fa"></i></th>
-                <th style="text-align: center">Branches <i class="fa"></i></th>
-                <th style="text-align: center">Branches % <i class="fa"></i></th>
-                <th style="text-align: center">Paths <i class="fa"></i></th>
-                <th style="text-align: center">Paths % <i class="fa"></i></th>
+                {% if opsCoverageAvailable %}
+                    <th style="text-align: center">OPs <i class="fa"></i></th>
+                    <th style="text-align: center">OPs % <i class="fa"></i></th>
+                {% endif %}
+                {% if linesCoverageAvailable %}
+                    <th style="text-align: center">Lines <i class="fa"></i></th>
+                    <th style="text-align: center">Lines % <i class="fa"></i></th>
+                {% endif %}
+                {% if branchesCoverageAvailable %}
+                    <th style="text-align: center">Branches <i class="fa"></i></th>
+                    <th style="text-align: center">Branches % <i class="fa"></i></th>
+                {% endif %}
+                {% if pathsCoverageAvailable %}
+                    <th style="text-align: center">Paths <i class="fa"></i></th>
+                    <th style="text-align: center">Paths % <i class="fa"></i></th>
+                {% endif %}
             </tr>
             </thead>
 
@@ -65,14 +95,22 @@
             {% for classname, classdata in classes %}
                 <tr>
                     <td><a href="./{{ classname|replace({'\\': '-'}) }}.html">{{ classname }}</a></td>
-                    <td style="text-align: center">{{ classdata.coverage.totalOps }}</td>
-                    <td style="text-align: center">{{ macros.labelify(classdata.coverage.ops) }}</td>
-                    <td style="text-align: center">{{ classdata.coverage.totalLines }}</td>
-                    <td style="text-align: center">{{ macros.labelify(classdata.coverage.lines) }}</td>
-                    <td style="text-align: center">{{ classdata.coverage.totalBranches }}</td>
-                    <td style="text-align: center">{{ macros.labelify(classdata.coverage.branches) }}</td>
-                    <td style="text-align: center">{{ classdata.coverage.totalPaths }}</td>
-                    <td style="text-align: center">{{ macros.labelify(classdata.coverage.paths) }}</td>
+                    {% if opsCoverageAvailable %}
+                        <td style="text-align: center">{{ classdata.coverage.totalOps }}</td>
+                        <td style="text-align: center">{{ macros.labelify(classdata.coverage.ops) }}</td>
+                    {% endif %}
+                    {% if linesCoverageAvailable %}
+                        <td style="text-align: center">{{ classdata.coverage.totalLines }}</td>
+                        <td style="text-align: center">{{ macros.labelify(classdata.coverage.lines) }}</td>
+                    {% endif %}
+                    {% if branchesCoverageAvailable %}
+                        <td style="text-align: center">{{ classdata.coverage.totalBranches }}</td>
+                        <td style="text-align: center">{{ macros.labelify(classdata.coverage.branches) }}</td>
+                    {% endif %}
+                    {% if pathsCoverageAvailable %}
+                        <td style="text-align: center">{{ classdata.coverage.totalPaths }}</td>
+                        <td style="text-align: center">{{ macros.labelify(classdata.coverage.paths) }}</td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </tbody>

@@ -1,5 +1,6 @@
 # `dev-master`
 
+# [#35](https://github.com/atoum/reports-extension/pull/35) Not available coverage numbers are hidden ([@jubianchi])
 * [#34](https://github.com/atoum/reports-extension/pull/34) The extension is now autoloaded ([@jubianchi])
 
 # 2.3.2 - 2016-06-22
