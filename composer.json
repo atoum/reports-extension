@@ -4,7 +4,7 @@
     "description": "atoum Reports extension",
     "keywords": ["TDD", "atoum", "test", "unit testing", "reports", "atoum-extension"],
     "homepage": "http://www.atoum.org",
-    "license": "BSD",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "jubianchi",
