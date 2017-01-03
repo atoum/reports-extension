@@ -1,3 +1,7 @@
+# `dev-master`
+
+* [#34](https://github.com/atoum/reports-extension/pull/34) The extension is now autoloaded ([@jubianchi])
+
 # 2.3.2 - 2016-06-22
 
 * [#19](https://github.com/atoum/reports-extension/pull/19) Fix dev autoloader ([@jubianchi])
