@@ -142,3 +142,6 @@ $runner->addReport($clover);
 ```
 
 and add report generate to `sonar.genericcoverage` properties
+
+reports-extension is released under the BSD 3-Clause License. See the bundled LICENSE file for details.
+
