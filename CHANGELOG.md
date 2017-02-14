@@ -1,5 +1,7 @@
 # `dev-master`
 
+* [#37](https://github.com/atoum/reports-extension/pull/37) Allow using Twig 2.x ([@jubianchi])
+
 # 2.4.0 - 2017-02-11
 
 * [#35](https://github.com/atoum/reports-extension/pull/35) Not available coverage numbers are hidden ([@jubianchi])

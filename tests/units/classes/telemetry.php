@@ -171,10 +171,9 @@ class telemetry extends atoum\test
                         'memory' => 0
                     ]
                 ]))->once
-            ->exception(function ($test) {
-                $test->testedInstance->setProjectName(uniqid());
-            }
-            )
+            ->exception(function () {
+                $this->testedInstance->setProjectName(uniqid());
+            })
                 ->isInstanceOf('mageekguy\atoum\exceptions\logic\invalidArgument')
                 ->hasMessage('Project name should match /^[a-z0-9_.-]+\/[a-z0-9_.-]+$/')
         ;
