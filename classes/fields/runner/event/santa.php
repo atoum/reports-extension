@@ -2,112 +2,101 @@
 
 namespace mageekguy\atoum\reports\fields\runner\event;
 
+use mageekguy\atoum\cli\colorizer;
+use mageekguy\atoum\cli\progressBar;
 use mageekguy\atoum\report\fields\runner\event\cli;
-use
-	mageekguy\atoum\test,
-	mageekguy\atoum\runner,
-	mageekguy\atoum\report,
-	mageekguy\atoum\exceptions,
-	mageekguy\atoum\cli\progressBar,
-	mageekguy\atoum\cli\colorizer
-;
+use mageekguy\atoum\runner;
 
 class santa extends cli
 {
-	const snowflake = '❅';
-	const refreshDelay = 0.15;
+    const snowflake = '❅';
+    const refreshDelay = 0.15;
 
-	protected $sprite;
-	protected $snowColorizer;
-	protected $santa = '';
-	protected $utime = 0;
+    protected $sprite;
+    protected $snowColorizer;
+    protected $santa = '';
+    protected $utime = 0;
 
-	public function __construct(progressBar $progressBar = null)
-	{
-		parent::__construct($progressBar);
+    public function __construct(progressBar $progressBar = null)
+    {
+        parent::__construct($progressBar);
 
-		$this->snowColorizer = new colorizer(38);
+        $this->snowColorizer = new colorizer(38);
 
-	$red = new colorizer(31);
-	$black = new colorizer('1;30');
-	$brown = new colorizer('38;5;94');
+        $red = new colorizer(31);
+        $black = new colorizer('1;30');
+        $brown = new colorizer('38;5;94');
 
-	$this->sprite = array(
-	'			_			',
-	'		   {_}		   ',
-	$red->colorize('		   / \\		   '),
-	$red->colorize('		  /   \\		  '),
-	$red->colorize('		 /_____\\		 '),
-	'	   {`_______`}	   ',
-	'		// . . \\\\		',
-	'	   (/(__7__)\\)	   ',
-	'	   |\'-` = `-\'|	   ',
-	'	   |		 |	   ',
-	$red->colorize('	   /') . '\\	   /' . $red->colorize('\\	   '),
-	$red->colorize('	  /  ') . '\'.   .\'' . $red->colorize('  \\	  '),
-	$red->colorize('	 /_/') . '   `"`   ' . $red->colorize('\\_\\	 '),
-	'	{__}' . $brown->colorize('###') . $black->colorize('[_]') . $brown->colorize('###') . '{__}	',
-	'	(_/' . $red->colorize('\\_________/') . '\\_)	',
-	$red->colorize('		|___|___|		'),
-	$red->colorize('		 |--|--|		 '),
-	$brown->colorize('		(__)') . '`' . $brown->colorize('(__)		')
-	);
-	}
+        $this->sprite = [
+    '			_			',
+    '		   {_}		   ',
+    $red->colorize('		   / \\		   '),
+    $red->colorize('		  /   \\		  '),
+    $red->colorize('		 /_____\\		 '),
+    '	   {`_______`}	   ',
+    '		// . . \\\\		',
+    '	   (/(__7__)\\)	   ',
+    '	   |\'-` = `-\'|	   ',
+    '	   |		 |	   ',
+    $red->colorize('	   /').'\\	   /'.$red->colorize('\\	   '),
+    $red->colorize('	  /  ').'\'.   .\''.$red->colorize('  \\	  '),
+    $red->colorize('	 /_/').'   `"`   '.$red->colorize('\\_\\	 '),
+    '	{__}'.$brown->colorize('###').$black->colorize('[_]').$brown->colorize('###').'{__}	',
+    '	(_/'.$red->colorize('\\_________/').'\\_)	',
+    $red->colorize('		|___|___|		'),
+    $red->colorize('		 |--|--|		 '),
+    $brown->colorize('		(__)').'`'.$brown->colorize('(__)		'),
+    ];
+    }
 
-	protected function clear()
-	{
-		if (empty($this->santa) === false)
-		{
-			$lines = explode(PHP_EOL, $this->santa);
-			return "\x1b[" . (sizeof($lines) - 1) . "F";
-		}
+    protected function clear()
+    {
+        if (empty($this->santa) === false) {
+            $lines = explode(PHP_EOL, $this->santa);
 
-	return '';
-	}
+            return "\x1b[".(count($lines) - 1).'F';
+        }
 
-	public function __toString()
-	{
-		if (microtime(true) - $this->utime < self::refreshDelay) {
-			return '';
-		}
+        return '';
+    }
 
-		$string = PHP_EOL;
+    public function __toString()
+    {
+        if (microtime(true) - $this->utime < self::refreshDelay) {
+            return '';
+        }
 
-		if ($this->event !== runner::runStop)
-		{
-			$string .= $this->clear();
+        $string = PHP_EOL;
 
-			for ($row = 0, $count = sizeof($this->sprite); $row < $count; $row++)
-			{
-				$string .= $this->getSnow() . $this->sprite[$row] . $this->getSnow() . PHP_EOL;
-			}
+        if ($this->event !== runner::runStop) {
+            $string .= $this->clear();
 
-			$string .= PHP_EOL;
+            for ($row = 0, $count = count($this->sprite); $row < $count; $row++) {
+                $string .= $this->getSnow().$this->sprite[$row].$this->getSnow().PHP_EOL;
+            }
 
-			$this->santa = $string;
-		}
+            $string .= PHP_EOL;
 
-		$this->utime = microtime(true);
+            $this->santa = $string;
+        }
 
-		return $string;
-	}
+        $this->utime = microtime(true);
 
-	protected function getSnow()
-	{
-		$string = '';
+        return $string;
+    }
 
-		for ($i = 0; $i < 10; $i++)
-		{
-			if (rand(0, 42) < rand(40, 42))
-			{
-				$string .= ' ';
-			}
-			else
-			{
-				$string .= $this->snowColorizer->colorize(self::snowflake);
-			}
-		}
+    protected function getSnow()
+    {
+        $string = '';
 
-		return $string;
-	}
+        for ($i = 0; $i < 10; $i++) {
+            if (rand(0, 42) < rand(40, 42)) {
+                $string .= ' ';
+            } else {
+                $string .= $this->snowColorizer->colorize(self::snowflake);
+            }
+        }
+
+        return $string;
+    }
 }

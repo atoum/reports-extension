@@ -115,39 +115,39 @@ class telemetry extends asynchronous
             }
 
             if ($this->isAnonymousProject === true) {
-                $this->setProjectName($this->projectVendorName . '/anon-' . md5($this->projectFullName));
+                $this->setProjectName($this->projectVendorName.'/anon-'.md5($this->projectFullName));
             }
 
             $report = [
-                'php' => $this->score->getPhpVersion(),
-                'framework' => 'atoum',
-                'version' => $this->score->getAtoumVersion(),
-                'os' => php_uname('s') . ' ' . php_uname('r'),
-                'arch' => php_uname('m'),
+                'php'         => $this->score->getPhpVersion(),
+                'framework'   => 'atoum',
+                'version'     => $this->score->getAtoumVersion(),
+                'os'          => php_uname('s').' '.php_uname('r'),
+                'arch'        => php_uname('m'),
                 'environment' => self::getEnvironment(),
-                'vendor' => $this->projectVendorName,
-                'project' => $this->projectName,
-                'metrics' => [
+                'vendor'      => $this->projectVendorName,
+                'project'     => $this->projectName,
+                'metrics'     => [
                     'classes' => $this->testClassNumber,
                     'methods' => [
-                        'total' => $this->testMethodNumber,
-                        'void' => $this->score->getVoidMethodNumber(),
+                        'total'      => $this->testMethodNumber,
+                        'void'       => $this->score->getVoidMethodNumber(),
                         'uncomplete' => $this->score->getUncompletedMethodNumber(),
-                        'skipped' => count($this->score->getSkippedMethods()),
-                        'failed' => count($this->score->getMethodsWithFail()),
-                        'errored' => count($this->score->getMethodsWithError()),
-                        'exception' => count($this->score->getMethodsWithException()),
+                        'skipped'    => count($this->score->getSkippedMethods()),
+                        'failed'     => count($this->score->getMethodsWithFail()),
+                        'errored'    => count($this->score->getMethodsWithError()),
+                        'exception'  => count($this->score->getMethodsWithException()),
                     ],
                     'assertions' => [
-                        'total' => $this->score->getAssertionNumber(),
+                        'total'  => $this->score->getAssertionNumber(),
                         'passed' => $this->score->getPassNumber(),
-                        'failed' => $this->score->getFailNumber()
+                        'failed' => $this->score->getFailNumber(),
                     ],
                     'exceptions' => $this->score->getExceptionNumber(),
-                    'errors' => $this->score->getErrorNumber(),
-                    'duration' => $this->score->getTotalDuration(),
-                    'memory' => $this->score->getTotalMemoryUsage()
-                ]
+                    'errors'     => $this->score->getErrorNumber(),
+                    'duration'   => $this->score->getTotalDuration(),
+                    'memory'     => $this->score->getTotalMemoryUsage(),
+                ],
             ];
 
             $coverage = $this->score->getCoverage();
@@ -172,8 +172,7 @@ class telemetry extends asynchronous
                 $this->http
                     ->setUrl($this->telemetryUrl)
                     ->setMethod('POST')
-                    ->write(json_encode($report))
-                ;
+                    ->write(json_encode($report));
 
                 $this->string = 'Your report has been sent to the telemetry. Thanks for sharing it with us!';
             } catch (atoum\writers\http\exception $exception) {

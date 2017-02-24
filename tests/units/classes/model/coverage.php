@@ -29,24 +29,23 @@ class coverage extends atoum\test
                 ->mock($template)
                     ->call('render')->withArguments(
                         [
-                            'classes' => [],
+                            'classes'  => [],
                             'coverage' => [
-                                'totalLines' => $totalLines,
-                                'coveredLines' => $coveredLines,
-                                'lines' => $coveredLines / $totalLines,
-                                'totalBranches' => $totalBranches,
+                                'totalLines'      => $totalLines,
+                                'coveredLines'    => $coveredLines,
+                                'lines'           => $coveredLines / $totalLines,
+                                'totalBranches'   => $totalBranches,
                                 'coveredBranches' => $coveredBranches,
-                                'branches' => $coveredBranches / $totalBranches,
-                                'totalPaths' => $totalPaths,
-                                'coveredPaths' => $coveredPaths,
-                                'paths' => $coveredPaths / $totalPaths,
-                                'totalOps' => $totalOps,
-                                'coveredOps' => $coveredOps,
-                                'ops' => $coveredOps / $totalOps,
-                            ]
+                                'branches'        => $coveredBranches / $totalBranches,
+                                'totalPaths'      => $totalPaths,
+                                'coveredPaths'    => $coveredPaths,
+                                'paths'           => $coveredPaths / $totalPaths,
+                                'totalOps'        => $totalOps,
+                                'coveredOps'      => $coveredOps,
+                                'ops'             => $coveredOps / $totalOps,
+                            ],
                         ]
-                    )->once
-        ;
+                    )->once;
     }
 
     public function testAddClass()
@@ -67,13 +66,12 @@ class coverage extends atoum\test
                             'classes' => [
                                 $name => [
                                     'coverage' => [],
-                                    'methods' => [],
-                                    'lines' => []
-                                ]
+                                    'methods'  => [],
+                                    'lines'    => [],
+                                ],
                             ],
-                            'coverage' => []
+                            'coverage' => [],
                         ]
-                    )->once
-        ;
+                    )->once;
     }
 }
