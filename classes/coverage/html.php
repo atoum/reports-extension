@@ -5,8 +5,7 @@ namespace mageekguy\atoum\reports\coverage;
 use mageekguy\atoum;
 use mageekguy\atoum\reports\coverage;
 use mageekguy\atoum\reports\model;
-use mageekguy\atoum\reports\score
-;
+use mageekguy\atoum\reports\score;
 
 class html extends coverage
 {
@@ -25,7 +24,7 @@ class html extends coverage
         $this->branchesCoverageTemplate = new atoum\reports\template('branch.html.twig');
         $this->pathsCoverageTemplate = new atoum\reports\template('path.html.twig');
 
-        $this->setOutPutDirectory(getcwd() . DIRECTORY_SEPARATOR . 'coverage');
+        $this->setOutPutDirectory(getcwd().DIRECTORY_SEPARATOR.'coverage');
     }
 
     public function setOutPutDirectory($outputDirectory)
@@ -40,7 +39,7 @@ class html extends coverage
         if ($event === atoum\runner::runStop) {
             $this->render();
 
-            $this->string .= 'Coverage report is available at file://' . realpath($this->outputDirectory) . '/index.html' . PHP_EOL;
+            $this->string .= 'Coverage report is available at file://'.realpath($this->outputDirectory).'/index.html'.PHP_EOL;
         }
 
         return $this;
@@ -48,7 +47,7 @@ class html extends coverage
 
     private function codeCoverageIsAvailable(model\coverage $coverage)
     {
-        $coverage->renderTo($this->indexTemplate, $this->outputDirectory . DIRECTORY_SEPARATOR . 'index.html');
+        $coverage->renderTo($this->indexTemplate, $this->outputDirectory.DIRECTORY_SEPARATOR.'index.html');
 
         return $this;
     }
@@ -56,9 +55,9 @@ class html extends coverage
     private function classCodeCoverageIsAvailable($class, model\coverage\klass $coverage)
     {
         $coverage
-            ->renderTo($this->linesCoverageTemplate, $this->outputDirectory . DIRECTORY_SEPARATOR . str_replace('\\', '-', $class) . '.html')
-            ->renderTo($this->branchesCoverageTemplate, $this->outputDirectory . DIRECTORY_SEPARATOR . str_replace('\\', '-', $class) . '-branch.html')
-            ->renderTo($this->pathsCoverageTemplate, $this->outputDirectory . DIRECTORY_SEPARATOR . str_replace('\\', '-', $class) . '-path.html');
+            ->renderTo($this->linesCoverageTemplate, $this->outputDirectory.DIRECTORY_SEPARATOR.str_replace('\\', '-', $class).'.html')
+            ->renderTo($this->branchesCoverageTemplate, $this->outputDirectory.DIRECTORY_SEPARATOR.str_replace('\\', '-', $class).'-branch.html')
+            ->renderTo($this->pathsCoverageTemplate, $this->outputDirectory.DIRECTORY_SEPARATOR.str_replace('\\', '-', $class).'-path.html');
 
         return $this;
     }
@@ -143,7 +142,7 @@ class html extends coverage
         $this->codeCoverageIsAvailable($coverageModel);
 
         $fs = new \Symfony\Component\Filesystem\Filesystem();
-        $fs->mirror(__DIR__ . '/../../resources/html/assets', $this->outputDirectory . DIRECTORY_SEPARATOR . 'assets');
-        $fs->mirror(__DIR__ . '/../../resources/html/fonts', $this->outputDirectory . DIRECTORY_SEPARATOR . 'fonts');
+        $fs->mirror(__DIR__.'/../../resources/html/assets', $this->outputDirectory.DIRECTORY_SEPARATOR.'assets');
+        $fs->mirror(__DIR__.'/../../resources/html/fonts', $this->outputDirectory.DIRECTORY_SEPARATOR.'fonts');
     }
 }

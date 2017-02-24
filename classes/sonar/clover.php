@@ -3,8 +3,7 @@
 namespace mageekguy\atoum\reports\sonar;
 
 use mageekguy\atoum;
-use mageekguy\atoum\exceptions
-;
+use mageekguy\atoum\exceptions;
 
 class clover extends atoum\reports\asynchronous
 {
@@ -41,7 +40,7 @@ class clover extends atoum\reports\asynchronous
             $document = new \DOMDocument('1.0', 'UTF-8');
             $document->formatOutput = true;
             $document->appendChild($root = $document->createElement('coverage'));
-            $root->setAttribute('version', "1");
+            $root->setAttribute('version', '1');
 
             $coverage = $this->score->getCoverage();
 
@@ -53,7 +52,7 @@ class clover extends atoum\reports\asynchronous
                     foreach ($lines as $line => $covered) {
                         $testCase = $document->createElement('lineToCover');
                         $testCase->setAttribute('lineNumber', $line);
-                        $testCase->setAttribute('covered', ($covered === 1) ? "true" : "false");
+                        $testCase->setAttribute('covered', ($covered === 1) ? 'true' : 'false');
                         $testSuite->appendChild($testCase);
                     }
                 }

@@ -3,8 +3,7 @@
 namespace mageekguy\atoum\reports\tests\units;
 
 use mageekguy\atoum;
-use mageekguy\atoum\reports\extension as testedClass
-;
+use mageekguy\atoum\reports\extension as testedClass;
 
 class extension extends atoum\test
 {
@@ -12,8 +11,7 @@ class extension extends atoum\test
     {
         $this
             ->testedClass
-                ->implements('mageekguy\atoum\extension')
-        ;
+                ->implements('mageekguy\atoum\extension');
     }
 
     public function test__construct()
@@ -28,8 +26,7 @@ class extension extends atoum\test
             ->and($extension = new testedClass($configurator))
             ->then
                 ->mock($parser)
-                    ->call('addHandler')->twice()
-        ;
+                    ->call('addHandler')->twice();
     }
 
     public function testGetSetRunner()
@@ -39,8 +36,7 @@ class extension extends atoum\test
             ->and($runner = new \mock\mageekguy\atoum\runner())
             ->then
                 ->object($this->testedInstance->setRunner($runner))->isTestedInstance
-                ->object($this->testedInstance->getRunner())->isIdenticalTo($runner)
-        ;
+                ->object($this->testedInstance->getRunner())->isIdenticalTo($runner);
     }
 
     public function testGetSetTest()
@@ -50,7 +46,6 @@ class extension extends atoum\test
             ->and($test = new \mock\mageekguy\atoum\test())
             ->then
                 ->object($this->testedInstance->setTest($test))->isTestedInstance
-                ->object($this->testedInstance->getTest())->isIdenticalTo($test)
-        ;
+                ->object($this->testedInstance->getTest())->isIdenticalTo($test);
     }
 }

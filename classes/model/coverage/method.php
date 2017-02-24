@@ -29,10 +29,10 @@ class method extends model
     {
         $template->render(
             [
-                'method' => $this->method,
+                'method'   => $this->method,
                 'coverage' => $this->coverage,
                 'branches' => $this->branches,
-                'paths' => $this->paths
+                'paths'    => $this->paths,
             ],
             $destination
         );

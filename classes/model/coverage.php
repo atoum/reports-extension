@@ -18,8 +18,8 @@ class coverage extends model
     {
         $this->classes[$name] = [
             'coverage' => $coverage,
-            'methods' => $methods,
-            'lines' => $lines,
+            'methods'  => $methods,
+            'lines'    => $lines,
         ];
 
         return $this;
@@ -28,8 +28,8 @@ class coverage extends model
     public function renderTo(template $template, $destination)
     {
         $template->render([
-            'classes' => $this->classes,
-            'coverage' => $this->coverage
+            'classes'  => $this->classes,
+            'coverage' => $this->coverage,
         ], $destination);
 
         return $this;

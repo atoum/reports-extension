@@ -35,7 +35,7 @@ class coverage
             );
         }
 
-        if (sizeof($branch['out']) === 0) {
+        if (count($branch['out']) === 0) {
             $this->totalBranches++;
 
             if ($branch['hit'] === 1) {
@@ -56,9 +56,9 @@ class coverage
 
     public function pathsAreAvailable(array $paths)
     {
-        $this->totalPaths += sizeof($paths);
+        $this->totalPaths += count($paths);
 
-        $this->coveredPaths += sizeof(array_filter($paths, function ($path) {
+        $this->coveredPaths += count(array_filter($paths, function ($path) {
             return $path['hit'] > 0;
         }));
 
@@ -67,10 +67,10 @@ class coverage
 
     public function linesAreAvailable(array $lines)
     {
-        $this->totalLines += sizeof(array_filter($lines, function ($hit) {
+        $this->totalLines += count(array_filter($lines, function ($hit) {
             return $hit > -2;
         }));
-        $this->coveredLines += sizeof(array_filter($lines, function ($hit) {
+        $this->coveredLines += count(array_filter($lines, function ($hit) {
             return $hit > 0;
         }));
 
@@ -98,7 +98,7 @@ class coverage
 
         if ($coverage->totalOps !== null) {
             $merged->totalOps += $coverage->totalOps;
-            $merged->additionalCoveredOps += sizeof($coverage->coveredOps ?: []) + $coverage->additionalCoveredOps;
+            $merged->additionalCoveredOps += count($coverage->coveredOps ?: []) + $coverage->additionalCoveredOps;
         }
 
         return $merged;
@@ -110,7 +110,7 @@ class coverage
             $this->totalLines, $this->coveredLines,
             $this->totalBranches, $this->coveredBranches,
             $this->totalPaths, $this->coveredPaths,
-            $this->totalOps, sizeof($this->coveredOps ?: []) + $this->additionalCoveredOps
+            $this->totalOps, count($this->coveredOps ?: []) + $this->additionalCoveredOps
         );
 
         return $this;

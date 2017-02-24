@@ -30,25 +30,24 @@ class method extends atoum\test
                 ->mock($template)
                     ->call('render')->withArguments(
                         [
-                            'method' => $method,
+                            'method'   => $method,
                             'coverage' => [
-                                'totalLines' => $totalLines,
-                                'coveredLines' => $coveredLines,
-                                'lines' => $coveredLines / $totalLines,
-                                'totalBranches' => $totalBranches,
+                                'totalLines'      => $totalLines,
+                                'coveredLines'    => $coveredLines,
+                                'lines'           => $coveredLines / $totalLines,
+                                'totalBranches'   => $totalBranches,
                                 'coveredBranches' => $coveredBranches,
-                                'branches' => $coveredBranches / $totalBranches,
-                                'totalPaths' => $totalPaths,
-                                'coveredPaths' => $coveredPaths,
-                                'paths' => $coveredPaths / $totalPaths,
-                                'totalOps' => $totalOps,
-                                'coveredOps' => $coveredOps,
-                                'ops' => $coveredOps / $totalOps,
+                                'branches'        => $coveredBranches / $totalBranches,
+                                'totalPaths'      => $totalPaths,
+                                'coveredPaths'    => $coveredPaths,
+                                'paths'           => $coveredPaths / $totalPaths,
+                                'totalOps'        => $totalOps,
+                                'coveredOps'      => $coveredOps,
+                                'ops'             => $coveredOps / $totalOps,
                             ],
                             'branches' => null,
-                            'paths' => null
+                            'paths'    => null,
                         ]
-                    )->once
-        ;
+                    )->once;
     }
 }

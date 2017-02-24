@@ -2,120 +2,113 @@
 
 namespace mageekguy\atoum\reports\fields\runner\event;
 
-use mageekguy\atoum\report\fields\runner\event\cli;
+use mageekguy\atoum\cli\colorizer;
 use
-	mageekguy\atoum\test,
-	mageekguy\atoum\runner,
-	mageekguy\atoum\report,
-	mageekguy\atoum\exceptions,
-	mageekguy\atoum\cli\progressBar,
-	mageekguy\atoum\cli\colorizer
-;
+    mageekguy\atoum\cli\progressBar;
+use mageekguy\atoum\report\fields\runner\event\cli;
+use mageekguy\atoum\runner;
+use mageekguy\atoum\test;
 
 class nyancat extends cli
 {
-	protected $cat = array(
-		array(
-			'  ,------,  ',
-			' ┓|      ^__^ ',
-			' ┗|    |｡◕‿‿◕｡| ',
-			'  ╰Oo---Oo  ',
-		),
-		array(
-			'  ,--------,',
-			' ┓|       ^__^',
-			' ┗|     |｡◕‿‿◕｡|',
-			'  ╰o-O---o-O',
-		),
-	);
-	protected $curve = "`·.,¸,.·'¯";
-	protected $offset = 0;
-	protected $catColorizer;
-	protected $rainbowColorizers;
-	protected $nyan = '';
-	protected $utime = 0;
+    protected $cat = [
+        [
+            '  ,------,  ',
+            ' ┓|      ^__^ ',
+            ' ┗|    |｡◕‿‿◕｡| ',
+            '  ╰Oo---Oo  ',
+        ],
+        [
+            '  ,--------,',
+            ' ┓|       ^__^',
+            ' ┗|     |｡◕‿‿◕｡|',
+            '  ╰o-O---o-O',
+        ],
+    ];
+    protected $curve = "`·.,¸,.·'¯";
+    protected $offset = 0;
+    protected $catColorizer;
+    protected $rainbowColorizers;
+    protected $nyan = '';
+    protected $utime = 0;
 
-	public function __construct(progressBar $progressBar = null)
-	{
-		parent::__construct($progressBar);
+    public function __construct(progressBar $progressBar = null)
+    {
+        parent::__construct($progressBar);
 
-		$this->catColorizer = new colorizer(32);
+        $this->catColorizer = new colorizer(32);
 
-		$this->rainbowColorizers = array(
-			new colorizer(31),
-			new colorizer(32),
-			new colorizer(33),
-			new colorizer(34),
-			new colorizer(35),
-			new colorizer(36)
-		);
-	}
+        $this->rainbowColorizers = [
+            new colorizer(31),
+            new colorizer(32),
+            new colorizer(33),
+            new colorizer(34),
+            new colorizer(35),
+            new colorizer(36),
+        ];
+    }
 
-	protected function clear()
-	{
-		if (empty($this->nyan) === false)
-		{
-			$lines = explode(PHP_EOL, $this->nyan);
-			return "\x1b[" . (sizeof($lines) - 1) . "F";
-		}
-	}
+    protected function clear()
+    {
+        if (empty($this->nyan) === false) {
+            $lines = explode(PHP_EOL, $this->nyan);
 
-	public function __toString()
-	{
-		if (in_array($this->event, array(test::fail, test::error, test::exception, test::uncompleted)))
-		{
-			$this->catColorizer = new colorizer(31);
-		}
+            return "\x1b[".(count($lines) - 1).'F';
+        }
+    }
 
-		if (microtime(true) - $this->utime < 0.15) {
-			return '';
-		}
+    public function __toString()
+    {
+        if (in_array($this->event, [test::fail, test::error, test::exception, test::uncompleted])) {
+            $this->catColorizer = new colorizer(31);
+        }
 
-		$string = PHP_EOL;
+        if (microtime(true) - $this->utime < 0.15) {
+            return '';
+        }
 
-		if ($this->event !== runner::runStop)
-		{
-			$cat = $this->cat[$this->offset % 2];
+        $string = PHP_EOL;
 
-			$string .= $this->clear();
+        if ($this->event !== runner::runStop) {
+            $cat = $this->cat[$this->offset % 2];
 
-			for ($row = 0, $count = sizeof($cat); $row < $count; $row++)
-			{
-				$string .= $this->getRainbowRow() . $this->catColorizer->colorize($cat[$row]) . PHP_EOL;
-			}
+            $string .= $this->clear();
 
-			$string .= PHP_EOL;
+            for ($row = 0, $count = count($cat); $row < $count; $row++) {
+                $string .= $this->getRainbowRow().$this->catColorizer->colorize($cat[$row]).PHP_EOL;
+            }
 
-			$this->offset = $this->offset + 1 === sizeof($this->rainbowColorizers)
-				? 0
-				: $this->offset + 1;
+            $string .= PHP_EOL;
 
-			$this->nyan = $string;
-		}
+            $this->offset = $this->offset + 1 === count($this->rainbowColorizers)
+                ? 0
+                : $this->offset + 1;
 
-		$this->utime = microtime(true);
+            $this->nyan = $string;
+        }
 
-		return $string;
-	}
+        $this->utime = microtime(true);
 
-	protected function getRainbowRow()
-	{
-		$string = '';
+        return $string;
+    }
 
-		for ($column = 0, $count = sizeof($this->rainbowColorizers); $column < $count; $column++)
-		{
-			$string .= $this->getColorizer($column - $this->offset)->colorize($this->curve);
-		}
+    protected function getRainbowRow()
+    {
+        $string = '';
 
-		return $string;
-	}
+        for ($column = 0, $count = count($this->rainbowColorizers); $column < $count; $column++) {
+            $string .= $this->getColorizer($column - $this->offset)->colorize($this->curve);
+        }
 
-	protected function getColorizer($offset)
-	{
-		$offset = $offset < 0
-			? sizeof($this->rainbowColorizers) - abs($offset)
-			: $offset;
+        return $string;
+    }
 
-		return $this->rainbowColorizers[$offset];
-	}
+    protected function getColorizer($offset)
+    {
+        $offset = $offset < 0
+            ? count($this->rainbowColorizers) - abs($offset)
+            : $offset;
+
+        return $this->rainbowColorizers[$offset];
+    }
 }

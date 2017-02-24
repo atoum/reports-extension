@@ -33,7 +33,7 @@ class xunit extends atoum\test
                 DIRECTORY_SEPARATOR,
                 [
                     __DIR__,
-                    'resources'
+                    'resources',
                 ]
             ))
             ->and($testScore->addDuration('foo', $class, $method, $duration = 1))
@@ -52,7 +52,6 @@ class xunit extends atoum\test
                 ->boolean($dom->loadXML((string) $report))
                 ->isTrue()
                 ->boolean($dom->schemaValidate(implode(DIRECTORY_SEPARATOR, [$path, 'xunit.xsd'])))
-                ->isTrue()
-        ;
+                ->isTrue();
     }
 }

@@ -55,22 +55,22 @@ class xunit extends atoum\reports\asynchronous
         $skipped = $this->score->getSkippedMethods();
         $assertions = $this->assertions;
 
-        $filterClass = function ($element) use (& $clname) {
-            return ($element['class'] == $clname);
+        $filterClass = function ($element) use (&$clname) {
+            return $element['class'] == $clname;
         };
-        $extractClasses = function ($list) use (& $clname, & $classes, & $assertions, $durations, $errors, $excepts, $fails, $uncomplete, $skipped, $filterClass) {
+        $extractClasses = function ($list) use (&$clname, &$classes, &$assertions, $durations, $errors, $excepts, $fails, $uncomplete, $skipped, $filterClass) {
             foreach ($list as $entry) {
                 $clname = ltrim($entry['class'], '\\');
 
                 if (isset($classes[$clname]) === false) {
                     $classes[$clname] = [
-                        'errors' => array_filter($errors, $filterClass),
-                        'excepts' => array_filter($excepts, $filterClass),
-                        'fails' => array_filter($fails, $filterClass),
-                        'durations' => array_filter($durations, $filterClass),
+                        'errors'     => array_filter($errors, $filterClass),
+                        'excepts'    => array_filter($excepts, $filterClass),
+                        'fails'      => array_filter($fails, $filterClass),
+                        'durations'  => array_filter($durations, $filterClass),
                         'uncomplete' => array_filter($uncomplete, $filterClass),
-                        'skipped' => array_filter($skipped, $filterClass),
-                        'assertions' => isset($assertions[$clname]) ? $assertions[$clname] : []
+                        'skipped'    => array_filter($skipped, $filterClass),
+                        'assertions' => isset($assertions[$clname]) ? $assertions[$clname] : [],
                     ];
                 }
             }
@@ -97,7 +97,7 @@ class xunit extends atoum\reports\asynchronous
             $document = new \DOMDocument('1.0', 'UTF-8');
             $document->formatOutput = true;
             $document->appendChild($root = $document->createElement('unitTest'));
-            $root->setAttribute('version', "1");
+            $root->setAttribute('version', '1');
             $classes = $this->getTestedClasses();
 
             foreach ($classes as $name => $class) {
@@ -132,7 +132,7 @@ class xunit extends atoum\reports\asynchronous
                     $testCase = self::getTestCase($document, $testSuite, $name, $uncomplete['method'], $duration['value'], null, isset($class['assertions'][$uncomplete['method']]) ? $class['assertions'][$uncomplete['method']] : 0);
                     $testCase->appendChild($xFail = $document->createElement('error'));
 
-                    $xFail->setAttribute('message', 'Uncomplete ' . $name);
+                    $xFail->setAttribute('message', 'Uncomplete '.$name);
                     $xFail->appendChild($document->createCDATASection($uncomplete['output']));
                 }
 
@@ -199,7 +199,5 @@ class xunit extends atoum\reports\asynchronous
         if ($query->length > 0) {
             return $query->item(0);
         }
-
-        return null;
     }
 }

@@ -30,26 +30,25 @@ class klass extends atoum\test
                 ->mock($template)
                     ->call('render')->withArguments(
                         [
-                            'class' => $class,
+                            'class'    => $class,
                             'coverage' => [
-                                'totalLines' => $totalLines,
-                                'coveredLines' => $coveredLines,
-                                'lines' => $coveredLines / $totalLines,
-                                'totalBranches' => $totalBranches,
+                                'totalLines'      => $totalLines,
+                                'coveredLines'    => $coveredLines,
+                                'lines'           => $coveredLines / $totalLines,
+                                'totalBranches'   => $totalBranches,
                                 'coveredBranches' => $coveredBranches,
-                                'branches' => $coveredBranches / $totalBranches,
-                                'totalPaths' => $totalPaths,
-                                'coveredPaths' => $coveredPaths,
-                                'paths' => $coveredPaths / $totalPaths,
-                                'totalOps' => $totalOps,
-                                'coveredOps' => $coveredOps,
-                                'ops' => $coveredOps / $totalOps,
+                                'branches'        => $coveredBranches / $totalBranches,
+                                'totalPaths'      => $totalPaths,
+                                'coveredPaths'    => $coveredPaths,
+                                'paths'           => $coveredPaths / $totalPaths,
+                                'totalOps'        => $totalOps,
+                                'coveredOps'      => $coveredOps,
+                                'ops'             => $coveredOps / $totalOps,
                             ],
                             'methods' => [],
-                            'lines' => []
+                            'lines'   => [],
                         ]
-                    )->once
-        ;
+                    )->once;
     }
 
     public function testAddMethod()
@@ -68,19 +67,18 @@ class klass extends atoum\test
                 ->mock($template)
                     ->call('render')->withArguments(
                         [
-                            'class' => $class,
+                            'class'    => $class,
                             'coverage' => null,
-                            'methods' => [
+                            'methods'  => [
                                 $name => [
                                     'coverage' => [],
                                     'branches' => [],
-                                    'paths' => []
-                                ]
+                                    'paths'    => [],
+                                ],
                             ],
-                            'lines' => []
+                            'lines' => [],
                         ]
-                    )->once
-        ;
+                    )->once;
     }
 
     public function testAddLine()
@@ -100,19 +98,18 @@ class klass extends atoum\test
                 ->mock($template)
                     ->call('render')->withArguments(
                         [
-                            'class' => $class,
+                            'class'    => $class,
                             'coverage' => null,
-                            'methods' => [],
-                            'lines' => [
+                            'methods'  => [],
+                            'lines'    => [
                                 $number => [
-                                    'code' => $code,
+                                    'code'   => $code,
                                     'number' => $number,
-                                    'hit' => 0,
-                                    'method' => null
-                                ]
-                            ]
+                                    'hit'    => 0,
+                                    'method' => null,
+                                ],
+                            ],
                         ]
-                    )->once
-        ;
+                    )->once;
     }
 }

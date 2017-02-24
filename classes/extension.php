@@ -17,13 +17,12 @@ class extension implements atoum\extension
             $parser = $configurator->getScript()->getArgumentsParser();
 
             $handler = function ($script, $argument, $values) {
-                $script->getRunner()->addTestsFromDirectory(dirname(__DIR__) . '/tests/units/classes');
+                $script->getRunner()->addTestsFromDirectory(dirname(__DIR__).'/tests/units/classes');
             };
 
             $parser
                 ->addHandler($handler, ['--test-ext'])
-                ->addHandler($handler, ['--test-it'])
-            ;
+                ->addHandler($handler, ['--test-it']);
         }
     }
 

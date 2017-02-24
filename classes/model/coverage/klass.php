@@ -24,7 +24,7 @@ class klass extends model
         $this->methods[$name] = [
             'coverage' => $coverage,
             'branches' => $branches,
-            'paths' => $paths,
+            'paths'    => $paths,
         ];
 
         return $this;
@@ -33,10 +33,10 @@ class klass extends model
     public function addLine($number, $code, $hit = null, $method = null)
     {
         $this->lines[$number] = [
-            'code' => $code,
-            'hit' => $hit ?: 0,
+            'code'   => $code,
+            'hit'    => $hit ?: 0,
             'number' => $number,
-            'method' => $method
+            'method' => $method,
         ];
 
         return $this;
@@ -53,10 +53,10 @@ class klass extends model
     {
         $template->render(
             [
-                'class' => $this->class,
+                'class'    => $this->class,
                 'coverage' => $this->coverage,
-                'methods' => $this->methods,
-                'lines' => $this->lines
+                'methods'  => $this->methods,
+                'lines'    => $this->lines,
             ],
             $destination
         );
