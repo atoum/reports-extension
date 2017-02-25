@@ -3,8 +3,7 @@
 namespace mageekguy\atoum\reports\tests\units;
 
 use mageekguy\atoum;
-use mageekguy\atoum\reports\extension as testedClass
-;
+use mageekguy\atoum\reports\extension as testedClass;
 
 class extension extends atoum\test
 {

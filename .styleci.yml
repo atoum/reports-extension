@@ -24,4 +24,4 @@ finder:
   path:
     - "."
   not-path:
-    - "resources/templates"
+    - "resources/html"
