@@ -1,4 +1,4 @@
-# atoum/reports-extension [![Build Status](https://travis-ci.org/atoum/reports-extension.svg?branch=master)](https://travis-ci.org/atoum/reports-extension)
+# atoum/reports-extension [![Build Status](https://travis-ci.org/atoum/reports-extension.svg?branch=master)](https://travis-ci.org/atoum/reports-extension) [![StyleCI](https://styleci.io/repos/35064717/shield?branch=master)](https://styleci.io/repos/35064717)
 
 ## Install it
 
