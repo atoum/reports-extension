@@ -5,8 +5,7 @@ namespace mageekguy\atoum\reports\coverage;
 use mageekguy\atoum;
 use mageekguy\atoum\reports\coverage;
 use mageekguy\atoum\reports\model;
-use mageekguy\atoum\reports\score
-;
+use mageekguy\atoum\reports\score;
 
 class html extends coverage
 {

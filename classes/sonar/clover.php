@@ -3,8 +3,7 @@
 namespace mageekguy\atoum\reports\sonar;
 
 use mageekguy\atoum;
-use mageekguy\atoum\exceptions
-;
+use mageekguy\atoum\exceptions;
 
 class clover extends atoum\reports\asynchronous
 {

@@ -3,8 +3,7 @@
 namespace mageekguy\atoum\reports\tests\units;
 
 use mageekguy\atoum;
-use mageekguy\atoum\reports\telemetry as testedClass
-;
+use mageekguy\atoum\reports\telemetry as testedClass;
 
 class telemetry extends atoum\test
 {
