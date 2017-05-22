@@ -1,4 +1,4 @@
-# 2.5.0 - 2017-05-22
+# 3.0.0 - 2017-05-22
 
 * [#38](https://github.com/atoum/reports-extension/pull/38) Allow atoum `^2.9` or `^3.0` ([@jubianchi])
 * [#37](https://github.com/atoum/reports-extension/pull/37) Allow using Twig 2.x ([@jubianchi])
