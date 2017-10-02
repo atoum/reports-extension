@@ -107,10 +107,14 @@ class coverage
     public function addToModel(model $model)
     {
         $model->coverageIs(
-            $this->totalLines, $this->coveredLines,
-            $this->totalBranches, $this->coveredBranches,
-            $this->totalPaths, $this->coveredPaths,
-            $this->totalOps, count($this->coveredOps ?: []) + $this->additionalCoveredOps
+            $this->totalLines,
+            $this->coveredLines,
+            $this->totalBranches,
+            $this->coveredBranches,
+            $this->totalPaths,
+            $this->coveredPaths,
+            $this->totalOps,
+            count($this->coveredOps ?: []) + $this->additionalCoveredOps
         );
 
         return $this;

@@ -17,10 +17,14 @@ class coverage extends atoum\test
             ->given(
                 $this->mockGenerator->shuntParentClassCalls(),
                 $template = new \mock\mageekguy\atoum\reports\template(uniqid()),
-                $totalLines = rand(1, PHP_INT_MAX), $coveredLines = rand(1, PHP_INT_MAX),
-                $totalBranches = rand(1, PHP_INT_MAX), $coveredBranches = rand(1, PHP_INT_MAX),
-                $totalPaths = rand(1, PHP_INT_MAX), $coveredPaths = rand(1, PHP_INT_MAX),
-                $totalOps = rand(1, PHP_INT_MAX), $coveredOps = rand(1, PHP_INT_MAX)
+                $totalLines = rand(1, PHP_INT_MAX),
+                $coveredLines = rand(1, PHP_INT_MAX),
+                $totalBranches = rand(1, PHP_INT_MAX),
+                $coveredBranches = rand(1, PHP_INT_MAX),
+                $totalPaths = rand(1, PHP_INT_MAX),
+                $coveredPaths = rand(1, PHP_INT_MAX),
+                $totalOps = rand(1, PHP_INT_MAX),
+                $coveredOps = rand(1, PHP_INT_MAX)
             )
             ->if($this->newTestedInstance)
             ->then
