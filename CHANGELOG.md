@@ -1,3 +1,11 @@
+# 3.0.0 - 2017-10-02
+
+* [#46](https://github.com/atoum/reports-extension/pull/46) Remove the telemetry report ([@jubianchi])
+
+## BREAKING CHANGE
+
+* Install the [atoum/telemetry-extension](https://github.com/atoum/telemetry-extension) to use the telemetry report.
+
 # 2.5.0 - 2017-10-02
 
 * [#38](https://github.com/atoum/reports-extension/pull/38) Allow atoum `^2.9` or `^3.0` ([@jubianchi])
