@@ -18,6 +18,5 @@ $telemetry->readProjectNameFromComposerJson(__DIR__ . '/composer.json');
 $telemetry->addWriter(new std\out());
 $runner->addReport($telemetry);
 
-$script->enableBranchAndPathCoverage();
 $script->noCodeCoverageForClasses('mageekguy\atoum\reports\asynchronous');
 $script->noCodeCoverageForClasses('mageekguy\atoum\report');
