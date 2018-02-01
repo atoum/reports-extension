@@ -15,7 +15,7 @@
     "require": {
         "php": "^5.4.0 || ^7.0.0",
         "twig/twig": "^1.18 | ^2.0",
-        "symfony/filesystem": "^2.6 | ^3.0",
+        "symfony/filesystem": "^2.6 | ^3.0 | ^4.0",
         "atoum/atoum": "^2.9 || ^3.0"
     },
     "require-dev": {
