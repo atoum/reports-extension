@@ -1,15 +1,15 @@
 <?php
 
-namespace mageekguy\atoum\reports\tests\units\sonar;
+namespace atoum\atoum\reports\tests\units\sonar;
 
-use mageekguy\atoum;
-use mageekguy\atoum\runner;
+use atoum\atoum;
+use atoum\atoum\runner;
 
 class xunit extends atoum\test
 {
     public function testClass()
     {
-        $this->testedClass->extends('mageekguy\atoum\reports\asynchronous');
+        $this->testedClass->extends('atoum\atoum\reports\asynchronous');
     }
 
     public function testBuild()
@@ -24,7 +24,7 @@ class xunit extends atoum\test
             ->and($runner->setScore($score))
             ->and($testScore = new atoum\test\score())
             ->and($testScore->addPass())
-            ->and($test = new \mock\mageekguy\atoum\test())
+            ->and($test = new \mock\atoum\atoum\test())
             ->and($test->getMockController()->getCurrentMethod[1] = $method = 'method')
             ->and($test->getMockController()->getCurrentMethod[2] = $otherMethod = 'otherMethod')
             ->and($test->getMockController()->getCurrentMethod[3] = $thirdMethod = 'thirdMethod')

@@ -1,9 +1,9 @@
 <?php
 
-namespace mageekguy\atoum\reports\model;
+namespace atoum\atoum\reports\model;
 
-use mageekguy\atoum\reports\model;
-use mageekguy\atoum\reports\template;
+use atoum\atoum\reports\model;
+use atoum\atoum\reports\template;
 
 class coverage extends model
 {
@@ -18,8 +18,8 @@ class coverage extends model
     {
         $this->classes[$name] = [
             'coverage' => $coverage,
-            'methods' => $methods,
-            'lines' => $lines,
+            'methods'  => $methods,
+            'lines'    => $lines,
         ];
 
         return $this;
@@ -28,7 +28,7 @@ class coverage extends model
     public function renderTo(template $template, $destination)
     {
         $template->render([
-            'classes' => $this->classes,
+            'classes'  => $this->classes,
             'coverage' => $this->coverage
         ], $destination);
 

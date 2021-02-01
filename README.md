@@ -17,7 +17,7 @@ Enable the extension using atoum configuration file:
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
-use mageekguy\atoum\reports;
+use atoum\atoum\reports;
 
 $extension = new reports\extension($script);
 
@@ -37,9 +37,9 @@ Add the following code to your configuration file:
 
 // .atoum.php
 
-use mageekguy\atoum\reports;
-use mageekguy\atoum\reports\coverage;
-use mageekguy\atoum\writers\std;
+use atoum\atoum\reports;
+use atoum\atoum\reports\coverage;
+use atoum\atoum\writers\std;
 
 $script->addDefaultReport();
 
@@ -75,13 +75,13 @@ $script->enableBranchAndPathCoverage();
 To add generic code coverage for sonar.
 
 ```php
-$xunit = new \mageekguy\atoum\reports\sonar\xunit();
-$writer = new \mageekguy\atoum\writers\file('./sonar-xunit.xml');
+$xunit = new \atoum\atoum\reports\sonar\xunit();
+$writer = new \atoum\atoum\writers\file('./sonar-xunit.xml');
 $xunit->addWriter($writer);
 $runner->addReport($xunit);
 
-$clover = new \mageekguy\atoum\reports\sonar\clover();
-$writer = new \mageekguy\atoum\writers\file('./sonar-clover.xml');
+$clover = new \atoum\atoum\reports\sonar\clover();
+$writer = new \atoum\atoum\writers\file('./sonar-clover.xml');
 $clover->addWriter($writer);
 $runner->addReport($clover);
 ```

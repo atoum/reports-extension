@@ -1,12 +1,12 @@
 <?php
 
-namespace mageekguy\atoum\reports\fields\runner\event;
+namespace atoum\atoum\reports\fields\runner\event;
 
-use mageekguy\atoum\cli\colorizer;
-use mageekguy\atoum\cli\progressBar;
-use mageekguy\atoum\report\fields\runner\event\cli;
-use mageekguy\atoum\runner;
-use mageekguy\atoum\test;
+use atoum\atoum\cli\colorizer;
+use atoum\atoum\cli\progressBar;
+use atoum\atoum\report\fields\runner\event\cli;
+use atoum\atoum\runner;
+use atoum\atoum\test;
 
 class nyancat extends cli
 {
@@ -24,11 +24,11 @@ class nyancat extends cli
             '  ╰o-O---o-O',
         ],
     ];
-    protected $curve = "`·.,¸,.·'¯";
+    protected $curve  = "`·.,¸,.·'¯";
     protected $offset = 0;
     protected $catColorizer;
     protected $rainbowColorizers;
-    protected $nyan = '';
+    protected $nyan  = '';
     protected $utime = 0;
 
     public function __construct(progressBar $progressBar = null)
@@ -51,7 +51,8 @@ class nyancat extends cli
     {
         if (empty($this->nyan) === false) {
             $lines = explode(PHP_EOL, $this->nyan);
-            return "\x1b[" . (count($lines) - 1) . "F";
+
+            return "\x1b[" . (count($lines) - 1) . 'F';
         }
     }
 

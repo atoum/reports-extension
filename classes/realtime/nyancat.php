@@ -1,12 +1,12 @@
 <?php
 
-namespace mageekguy\atoum\reports\realtime;
+namespace atoum\atoum\reports\realtime;
 
-use mageekguy\atoum\cli\colorizer;
-use mageekguy\atoum\cli\prompt;
-use mageekguy\atoum\report\fields\runner;
-use mageekguy\atoum\reports\fields\runner\event\nyancat as nyancatField;
-use mageekguy\atoum\reports\realtime;
+use atoum\atoum\cli\colorizer;
+use atoum\atoum\cli\prompt;
+use atoum\atoum\report\fields\runner;
+use atoum\atoum\reports\fields\runner\event\nyancat as nyancatField;
+use atoum\atoum\reports\realtime;
 
 class nyancat extends realtime
 {
@@ -16,9 +16,9 @@ class nyancat extends realtime
 
         $defaultColorizer = new colorizer('1;36');
 
-        $firstLevelPrompt = new prompt('> ');
+        $firstLevelPrompt  = new prompt('> ');
         $secondLevelPrompt = new prompt('=> ', $defaultColorizer);
-        $thirdLevelPrompt = new prompt('==> ', $defaultColorizer);
+        $thirdLevelPrompt  = new prompt('==> ', $defaultColorizer);
 
         $phpPathField = new runner\php\path\cli();
         $phpPathField
@@ -82,7 +82,7 @@ class nyancat extends realtime
         $this->addField(new nyancatField());
 
         $failureColorizer = new colorizer('0;31');
-        $failurePrompt = clone $secondLevelPrompt;
+        $failurePrompt    = clone $secondLevelPrompt;
         $failurePrompt->setColorizer($failureColorizer);
 
         $runnerFailuresField = new runner\failures\cli();
@@ -103,7 +103,7 @@ class nyancat extends realtime
 
         $this->addField($runnerOutputsField);
 
-        $errorColorizer = new colorizer('0;33');
+        $errorColorizer    = new colorizer('0;33');
         $errorMethodPrompt = clone $secondLevelPrompt;
         $errorMethodPrompt->setColorizer($errorColorizer);
         $errorPrompt = clone $thirdLevelPrompt;
@@ -119,7 +119,7 @@ class nyancat extends realtime
 
         $this->addField($runnerErrorsField);
 
-        $exceptionColorizer = new colorizer('0;35');
+        $exceptionColorizer    = new colorizer('0;35');
         $exceptionMethodPrompt = clone $secondLevelPrompt;
         $exceptionMethodPrompt->setColorizer($exceptionColorizer);
         $exceptionPrompt = clone $thirdLevelPrompt;
@@ -135,7 +135,7 @@ class nyancat extends realtime
 
         $this->addField($runnerExceptionsField);
 
-        $uncompletedTestColorizer = new colorizer('0;37');
+        $uncompletedTestColorizer    = new colorizer('0;37');
         $uncompletedTestMethodPrompt = clone $secondLevelPrompt;
         $uncompletedTestMethodPrompt->setColorizer($uncompletedTestColorizer);
         $uncompletedTestOutputPrompt = clone $thirdLevelPrompt;
@@ -151,7 +151,7 @@ class nyancat extends realtime
 
         $this->addField($runnerUncompletedField);
 
-        $voidTestColorizer = new colorizer('0;34');
+        $voidTestColorizer    = new colorizer('0;34');
         $voidTestMethodPrompt = clone $secondLevelPrompt;
         $voidTestMethodPrompt->setColorizer($voidTestColorizer);
 
@@ -164,7 +164,7 @@ class nyancat extends realtime
 
         $this->addField($runnerVoidField);
 
-        $skippedTestColorizer = new colorizer('0;90');
+        $skippedTestColorizer    = new colorizer('0;90');
         $skippedTestMethodPrompt = clone $secondLevelPrompt;
         $skippedTestMethodPrompt->setColorizer($skippedTestColorizer);
 

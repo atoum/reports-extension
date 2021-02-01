@@ -1,8 +1,8 @@
 <?php
 
-namespace mageekguy\atoum\reports\score;
+namespace atoum\atoum\reports\score;
 
-use mageekguy\atoum\reports\model;
+use atoum\atoum\reports\model;
 
 class coverage
 {
@@ -82,22 +82,22 @@ class coverage
         $merged = clone $this;
 
         if ($coverage->totalLines !== null) {
-            $merged->totalLines += $coverage->totalLines;
+            $merged->totalLines   += $coverage->totalLines;
             $merged->coveredLines += $coverage->coveredLines;
         }
 
         if ($coverage->totalBranches !== null) {
-            $merged->totalBranches += $coverage->totalBranches;
+            $merged->totalBranches   += $coverage->totalBranches;
             $merged->coveredBranches += $coverage->coveredBranches;
         }
 
         if ($coverage->totalPaths !== null) {
-            $merged->totalPaths += $coverage->totalPaths;
+            $merged->totalPaths   += $coverage->totalPaths;
             $merged->coveredPaths += $coverage->coveredPaths;
         }
 
         if ($coverage->totalOps !== null) {
-            $merged->totalOps += $coverage->totalOps;
+            $merged->totalOps             += $coverage->totalOps;
             $merged->additionalCoveredOps += count($coverage->coveredOps ?: []) + $coverage->additionalCoveredOps;
         }
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace mageekguy\atoum\reports\sonar;
+namespace atoum\atoum\reports\sonar;
 
-use mageekguy\atoum;
-use mageekguy\atoum\exceptions;
+use atoum\atoum;
+use atoum\atoum\exceptions;
 
 class clover extends atoum\reports\asynchronous
 {
     const defaultTitle = 'atoum testsuite';
 
-    protected $score = null;
+    protected $score      = null;
     protected $assertions = [];
 
     public function __construct(atoum\adapter $adapter = null)
@@ -37,10 +37,10 @@ class clover extends atoum\reports\asynchronous
         if ($event === atoum\runner::runStop) {
             $this->title = $this->title ?: self::defaultTitle;
 
-            $document = new \DOMDocument('1.0', 'UTF-8');
+            $document               = new \DOMDocument('1.0', 'UTF-8');
             $document->formatOutput = true;
             $document->appendChild($root = $document->createElement('coverage'));
-            $root->setAttribute('version', "1");
+            $root->setAttribute('version', '1');
 
             $coverage = $this->score->getCoverage();
 
@@ -52,7 +52,7 @@ class clover extends atoum\reports\asynchronous
                     foreach ($lines as $line => $covered) {
                         $testCase = $document->createElement('lineToCover');
                         $testCase->setAttribute('lineNumber', $line);
-                        $testCase->setAttribute('covered', ($covered === 1) ? "true" : "false");
+                        $testCase->setAttribute('covered', ($covered === 1) ? 'true' : 'false');
                         $testSuite->appendChild($testCase);
                     }
                 }

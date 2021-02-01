@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "mageekguy\\atoum\\reports\\": "classes"
+            "atoum\\atoum\\reports\\": "classes"
         },
         "files": ["configuration.php"]
     }

@@ -1,8 +1,8 @@
 <?php
 
 use
-	mageekguy\atoum\reports\coverage,
-	mageekguy\atoum\writers\std
+	atoum\atoum\reports\coverage,
+	atoum\atoum\writers\std
 ;
 
 $script->addDefaultReport();
@@ -12,5 +12,5 @@ $coverage->addWriter(new std\out());
 $coverage->setOutPutDirectory(__DIR__ . '/coverage');
 $runner->addReport($coverage);
 
-$script->noCodeCoverageForClasses('mageekguy\atoum\reports\asynchronous');
-$script->noCodeCoverageForClasses('mageekguy\atoum\report');
+$script->noCodeCoverageForClasses('atoum\atoum\reports\asynchronous');
+$script->noCodeCoverageForClasses('atoum\atoum\report');

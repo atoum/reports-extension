@@ -1,6 +1,6 @@
 <?php
 
-namespace mageekguy\atoum\reports;
+namespace atoum\atoum\reports;
 
 abstract class model
 {
@@ -9,18 +9,18 @@ abstract class model
     public function coverageIs($totalLines, $coveredLines, $totalBranches, $coveredBranches, $totalPaths, $coveredPaths, $totalOps, $coveredOps)
     {
         $this->coverage = [
-            'totalLines' => $totalLines,
-            'coveredLines' => $coveredLines,
-            'lines' => $totalLines !== null ? $coveredLines / $totalLines : null,
-            'totalBranches' => $totalBranches,
+            'totalLines'      => $totalLines,
+            'coveredLines'    => $coveredLines,
+            'lines'           => $totalLines !== null ? $coveredLines / $totalLines : null,
+            'totalBranches'   => $totalBranches,
             'coveredBranches' => $coveredBranches,
-            'branches' => $totalBranches !== null ? $coveredBranches / $totalBranches : null,
-            'totalPaths' => $totalPaths,
-            'coveredPaths' => $coveredPaths,
-            'paths' => $totalPaths > 0 ? $coveredPaths / $totalPaths : null,
-            'totalOps' => $totalOps,
-            'coveredOps' => $coveredOps,
-            'ops' => $totalOps > 0 ? $coveredOps / $totalOps : null
+            'branches'        => $totalBranches !== null ? $coveredBranches / $totalBranches : null,
+            'totalPaths'      => $totalPaths,
+            'coveredPaths'    => $coveredPaths,
+            'paths'           => $totalPaths > 0 ? $coveredPaths / $totalPaths : null,
+            'totalOps'        => $totalOps,
+            'coveredOps'      => $coveredOps,
+            'ops'             => $totalOps > 0 ? $coveredOps / $totalOps : null
         ];
 
         return $this;

@@ -1,15 +1,15 @@
 <?php
 
-namespace mageekguy\atoum\reports\fields\runner\event;
+namespace atoum\atoum\reports\fields\runner\event;
 
-use mageekguy\atoum\cli\colorizer;
-use mageekguy\atoum\cli\progressBar;
-use mageekguy\atoum\report\fields\runner\event\cli;
-use mageekguy\atoum\runner;
+use atoum\atoum\cli\colorizer;
+use atoum\atoum\cli\progressBar;
+use atoum\atoum\report\fields\runner\event\cli;
+use atoum\atoum\runner;
 
 class santa extends cli
 {
-    const snowflake = '❅';
+    const snowflake    = '❅';
     const refreshDelay = 0.15;
 
     protected $sprite;
@@ -23,37 +23,38 @@ class santa extends cli
 
         $this->snowColorizer = new colorizer(38);
 
-        $red = new colorizer(31);
+        $red   = new colorizer(31);
         $black = new colorizer('1;30');
         $brown = new colorizer('38;5;94');
 
         $this->sprite = [
-    '			_			',
-    '		   {_}		   ',
-    $red->colorize('		   / \\		   '),
-    $red->colorize('		  /   \\		  '),
-    $red->colorize('		 /_____\\		 '),
-    '	   {`_______`}	   ',
-    '		// . . \\\\		',
-    '	   (/(__7__)\\)	   ',
-    '	   |\'-` = `-\'|	   ',
-    '	   |		 |	   ',
-    $red->colorize('	   /') . '\\	   /' . $red->colorize('\\	   '),
-    $red->colorize('	  /  ') . '\'.   .\'' . $red->colorize('  \\	  '),
-    $red->colorize('	 /_/') . '   `"`   ' . $red->colorize('\\_\\	 '),
-    '	{__}' . $brown->colorize('###') . $black->colorize('[_]') . $brown->colorize('###') . '{__}	',
-    '	(_/' . $red->colorize('\\_________/') . '\\_)	',
-    $red->colorize('		|___|___|		'),
-    $red->colorize('		 |--|--|		 '),
-    $brown->colorize('		(__)') . '`' . $brown->colorize('(__)		')
-    ];
+            '			_			',
+            '		   {_}		   ',
+            $red->colorize('		   / \\		   '),
+            $red->colorize('		  /   \\		  '),
+            $red->colorize('		 /_____\\		 '),
+            '	   {`_______`}	   ',
+            '		// . . \\\\		',
+            '	   (/(__7__)\\)	   ',
+            '	   |\'-` = `-\'|	   ',
+            '	   |		 |	   ',
+            $red->colorize('	   /') . '\\	   /' . $red->colorize('\\	   '),
+            $red->colorize('	  /  ') . '\'.   .\'' . $red->colorize('  \\	  '),
+            $red->colorize('	 /_/') . '   `"`   ' . $red->colorize('\\_\\	 '),
+            '	{__}' . $brown->colorize('###') . $black->colorize('[_]') . $brown->colorize('###') . '{__}	',
+            '	(_/' . $red->colorize('\\_________/') . '\\_)	',
+            $red->colorize('		|___|___|		'),
+            $red->colorize('		 |--|--|		 '),
+            $brown->colorize('		(__)') . '`' . $brown->colorize('(__)		')
+        ];
     }
 
     protected function clear()
     {
         if (empty($this->santa) === false) {
             $lines = explode(PHP_EOL, $this->santa);
-            return "\x1b[" . (count($lines) - 1) . "F";
+
+            return "\x1b[" . (count($lines) - 1) . 'F';
         }
 
         return '';

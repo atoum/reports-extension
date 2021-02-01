@@ -1,13 +1,13 @@
 <?php
 
-namespace mageekguy\atoum\reports\realtime;
+namespace atoum\atoum\reports\realtime;
 
-use mageekguy\atoum\cli\colorizer;
-use mageekguy\atoum\cli\prompt;
-use mageekguy\atoum\report\fields\runner;
-use mageekguy\atoum\report\fields\runner\tests\void\cli;
-use mageekguy\atoum\reports\fields\runner\event\santa as santaField;
-use mageekguy\atoum\reports\realtime;
+use atoum\atoum\cli\colorizer;
+use atoum\atoum\cli\prompt;
+use atoum\atoum\report\fields\runner;
+use atoum\atoum\report\fields\runner\tests\void\cli;
+use atoum\atoum\reports\fields\runner\event\santa as santaField;
+use atoum\atoum\reports\realtime;
 
 class santa extends realtime
 {
@@ -17,9 +17,9 @@ class santa extends realtime
 
         $defaultColorizer = new colorizer('1;31');
 
-        $firstLevelPrompt = new prompt('> ');
+        $firstLevelPrompt  = new prompt('> ');
         $secondLevelPrompt = new prompt('=> ', $defaultColorizer);
-        $thirdLevelPrompt = new prompt('==> ', $defaultColorizer);
+        $thirdLevelPrompt  = new prompt('==> ', $defaultColorizer);
 
         $phpPathField = new runner\php\path\cli();
         $phpPathField
@@ -83,7 +83,7 @@ class santa extends realtime
         $this->addField(new santaField());
 
         $failureColorizer = new colorizer('0;31');
-        $failurePrompt = clone $secondLevelPrompt;
+        $failurePrompt    = clone $secondLevelPrompt;
         $failurePrompt->setColorizer($failureColorizer);
 
         $runnerFailuresField = new runner\failures\cli();
@@ -104,7 +104,7 @@ class santa extends realtime
 
         $this->addField($runnerOutputsField);
 
-        $errorColorizer = new colorizer('0;33');
+        $errorColorizer    = new colorizer('0;33');
         $errorMethodPrompt = clone $secondLevelPrompt;
         $errorMethodPrompt->setColorizer($errorColorizer);
         $errorPrompt = clone $thirdLevelPrompt;
@@ -120,7 +120,7 @@ class santa extends realtime
 
         $this->addField($runnerErrorsField);
 
-        $exceptionColorizer = new colorizer('0;35');
+        $exceptionColorizer    = new colorizer('0;35');
         $exceptionMethodPrompt = clone $secondLevelPrompt;
         $exceptionMethodPrompt->setColorizer($exceptionColorizer);
         $exceptionPrompt = clone $thirdLevelPrompt;
@@ -136,7 +136,7 @@ class santa extends realtime
 
         $this->addField($runnerExceptionsField);
 
-        $uncompletedTestColorizer = new colorizer('0;37');
+        $uncompletedTestColorizer    = new colorizer('0;37');
         $uncompletedTestMethodPrompt = clone $secondLevelPrompt;
         $uncompletedTestMethodPrompt->setColorizer($uncompletedTestColorizer);
         $uncompletedTestOutputPrompt = clone $thirdLevelPrompt;
@@ -152,7 +152,7 @@ class santa extends realtime
 
         $this->addField($runnerUncompletedField);
 
-        $voidTestColorizer = new colorizer('0;34');
+        $voidTestColorizer    = new colorizer('0;34');
         $voidTestMethodPrompt = clone $secondLevelPrompt;
         $voidTestMethodPrompt->setColorizer($voidTestColorizer);
 
@@ -165,7 +165,7 @@ class santa extends realtime
 
         $this->addField($runnerVoidField);
 
-        $skippedTestColorizer = new colorizer('0;90');
+        $skippedTestColorizer    = new colorizer('0;90');
         $skippedTestMethodPrompt = clone $secondLevelPrompt;
         $skippedTestMethodPrompt->setColorizer($skippedTestColorizer);
 

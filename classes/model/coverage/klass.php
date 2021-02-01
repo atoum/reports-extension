@@ -1,10 +1,10 @@
 <?php
 
-namespace mageekguy\atoum\reports\model\coverage;
+namespace atoum\atoum\reports\model\coverage;
 
-use mageekguy\atoum\reports\model;
-use mageekguy\atoum\reports\model\coverage;
-use mageekguy\atoum\reports\template;
+use atoum\atoum\reports\model;
+use atoum\atoum\reports\model\coverage;
+use atoum\atoum\reports\template;
 
 class klass extends model
 {
@@ -14,9 +14,9 @@ class klass extends model
 
     public function __construct($class)
     {
-        $this->class = $class;
+        $this->class   = $class;
         $this->methods = [];
-        $this->lines = [];
+        $this->lines   = [];
     }
 
     public function addMethod($name, array $coverage, array $branches, array $paths)
@@ -24,7 +24,7 @@ class klass extends model
         $this->methods[$name] = [
             'coverage' => $coverage,
             'branches' => $branches,
-            'paths' => $paths,
+            'paths'    => $paths,
         ];
 
         return $this;
@@ -33,8 +33,8 @@ class klass extends model
     public function addLine($number, $code, $hit = null, $method = null)
     {
         $this->lines[$number] = [
-            'code' => $code,
-            'hit' => $hit ?: 0,
+            'code'   => $code,
+            'hit'    => $hit ?: 0,
             'number' => $number,
             'method' => $method
         ];
@@ -53,10 +53,10 @@ class klass extends model
     {
         $template->render(
             [
-                'class' => $this->class,
+                'class'    => $this->class,
                 'coverage' => $this->coverage,
-                'methods' => $this->methods,
-                'lines' => $this->lines
+                'methods'  => $this->methods,
+                'lines'    => $this->lines
             ],
             $destination
         );

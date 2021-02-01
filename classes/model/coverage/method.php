@@ -1,9 +1,9 @@
 <?php
 
-namespace mageekguy\atoum\reports\model\coverage;
+namespace atoum\atoum\reports\model\coverage;
 
-use mageekguy\atoum\reports\model;
-use mageekguy\atoum\reports\template;
+use atoum\atoum\reports\model;
+use atoum\atoum\reports\template;
 
 class method extends model
 {
@@ -13,9 +13,9 @@ class method extends model
 
     public function __construct($method, array $branches = null, array $paths = null)
     {
-        $this->method = $method;
+        $this->method   = $method;
         $this->branches = $branches;
-        $this->paths = $paths;
+        $this->paths    = $paths;
     }
 
     public function addToModel(klass $class)
@@ -29,10 +29,10 @@ class method extends model
     {
         $template->render(
             [
-                'method' => $this->method,
+                'method'   => $this->method,
                 'coverage' => $this->coverage,
                 'branches' => $this->branches,
-                'paths' => $this->paths
+                'paths'    => $this->paths
             ],
             $destination
         );

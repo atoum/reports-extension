@@ -1,11 +1,11 @@
 <?php
 
-namespace mageekguy\atoum\reports\coverage;
+namespace atoum\atoum\reports\coverage;
 
-use mageekguy\atoum;
-use mageekguy\atoum\reports\coverage;
-use mageekguy\atoum\reports\model;
-use mageekguy\atoum\reports\score;
+use atoum\atoum;
+use atoum\atoum\reports\coverage;
+use atoum\atoum\reports\model;
+use atoum\atoum\reports\score;
 
 class html extends coverage
 {
@@ -19,10 +19,10 @@ class html extends coverage
     {
         parent::__construct();
 
-        $this->indexTemplate = new atoum\reports\template('classes.html.twig');
-        $this->linesCoverageTemplate = new atoum\reports\template('class.html.twig');
+        $this->indexTemplate            = new atoum\reports\template('classes.html.twig');
+        $this->linesCoverageTemplate    = new atoum\reports\template('class.html.twig');
         $this->branchesCoverageTemplate = new atoum\reports\template('branch.html.twig');
-        $this->pathsCoverageTemplate = new atoum\reports\template('path.html.twig');
+        $this->pathsCoverageTemplate    = new atoum\reports\template('path.html.twig');
 
         $this->setOutPutDirectory(getcwd() . DIRECTORY_SEPARATOR . 'coverage');
     }
@@ -79,11 +79,11 @@ class html extends coverage
     {
         $this->prepareOutputDIrectory();
 
-        $files = $this->score->getClasses();
-        $methods = $this->score->getMethods() ?: [];
+        $files    = $this->score->getClasses();
+        $methods  = $this->score->getMethods() ?: [];
         $branches = $this->score->getBranches() ?: [];
-        $paths = $this->score->getPaths() ?: [];
-        $classes = array_unique(array_merge(array_keys($methods), array_keys($branches), array_keys($paths)));
+        $paths    = $this->score->getPaths() ?: [];
+        $classes  = array_unique(array_merge(array_keys($methods), array_keys($branches), array_keys($paths)));
 
         $coverageModel = new model\coverage();
         $coverageScore = new score\coverage();
@@ -91,13 +91,13 @@ class html extends coverage
         foreach ($classes as $className) {
             $classMethods = array_unique(
                 array_merge(
-                    array_keys(isset($methods[$className]) ? $methods[$className] : []),
-                    array_keys(isset($branches[$className]) ? $branches[$className] : []),
-                    array_keys(isset($paths[$className]) ? $paths[$className] : [])
+                    array_keys($methods[$className] ?? []),
+                    array_keys($branches[$className] ?? []),
+                    array_keys($paths[$className] ?? [])
                 )
             );
-            $classLines = file($files[$className]);
-            $classModel = new model\coverage\klass($className);
+            $classLines    = file($files[$className]);
+            $classModel    = new model\coverage\klass($className);
             $classCoverage = new score\coverage();
 
             foreach ($classLines as $number => $line) {
@@ -105,13 +105,13 @@ class html extends coverage
             }
 
             foreach ($classMethods as $methodName) {
-                $methodLines = isset($methods[$className][$methodName]) ? $methods[$className][$methodName] : [];
-                $methodBranches = isset($branches[$className][$methodName]) ? $branches[$className][$methodName] : [];
-                $methodPaths = isset($paths[$className][$methodName]) ? $paths[$className][$methodName] : [];
+                $methodLines     = $methods[$className][$methodName]  ?? [];
+                $methodBranches  = $branches[$className][$methodName] ?? [];
+                $methodPaths     = $paths[$className][$methodName]    ?? [];
                 $reflectedMethod = new \reflectionMethod($className, $methodName);
                 $startLineNumber = $reflectedMethod->getStartLine();
-                $methodModel = new model\coverage\method($methodName, $methodBranches, $methodPaths);
-                $methodCoverage = new score\coverage();
+                $methodModel     = new model\coverage\method($methodName, $methodBranches, $methodPaths);
+                $methodCoverage  = new score\coverage();
 
                 $classModel->addLine($startLineNumber, rtrim($classLines[$startLineNumber - 1]), null, $methodName);
                 $methodCoverage->linesAreAvailable($methodLines);
