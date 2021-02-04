@@ -1,6 +1,6 @@
 <?php
 
-namespace mageekguy\atoum\reports;
+namespace atoum\atoum\reports;
 
 class template
 {

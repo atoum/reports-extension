@@ -1,8 +1,8 @@
 <?php
 
-namespace mageekguy\atoum\reports\score;
+namespace atoum\atoum\reports\score;
 
-use mageekguy\atoum\reports\model;
+use atoum\atoum\reports\model;
 
 class coverage
 {

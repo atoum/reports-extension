@@ -1,13 +1,13 @@
 <?php
 
-namespace mageekguy\atoum\reports\realtime;
+namespace atoum\atoum\reports\realtime;
 
-use mageekguy\atoum\cli\colorizer;
-use mageekguy\atoum\cli\prompt;
-use mageekguy\atoum\report\fields\runner;
-use mageekguy\atoum\report\fields\runner\tests\void\cli;
-use mageekguy\atoum\reports\fields\runner\event\santa as santaField;
-use mageekguy\atoum\reports\realtime;
+use atoum\atoum\cli\colorizer;
+use atoum\atoum\cli\prompt;
+use atoum\atoum\report\fields\runner;
+use atoum\atoum\report\fields\runner\tests\void\cli;
+use atoum\atoum\reports\fields\runner\event\santa as santaField;
+use atoum\atoum\reports\realtime;
 
 class santa extends realtime
 {

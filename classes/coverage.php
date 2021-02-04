@@ -1,8 +1,8 @@
 <?php
 
-namespace mageekguy\atoum\reports;
+namespace atoum\atoum\reports;
 
-use mageekguy\atoum;
+use atoum\atoum;
 
 class coverage extends asynchronous
 {
