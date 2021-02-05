@@ -1,13 +1,13 @@
 <?php
 
-namespace mageekguy\atoum\reports\tests\units\coverage;
+namespace atoum\atoum\reports\tests\units\coverage;
 
-use mageekguy\atoum;
+use atoum\atoum;
 
 class html extends atoum\test
 {
     public function testClass()
     {
-        $this->testedClass->extends('mageekguy\atoum\reports\coverage');
+        $this->testedClass->extends('atoum\atoum\reports\coverage');
     }
 }

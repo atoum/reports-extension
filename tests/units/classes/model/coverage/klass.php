@@ -1,14 +1,14 @@
 <?php
 
-namespace mageekguy\atoum\reports\tests\units\model\coverage;
+namespace atoum\atoum\reports\tests\units\model\coverage;
 
-use mageekguy\atoum;
+use atoum\atoum;
 
 class klass extends atoum\test
 {
     public function testClass()
     {
-        $this->testedClass->extends('mageekguy\atoum\reports\model');
+        $this->testedClass->extends('atoum\atoum\reports\model');
     }
 
     public function testCoverageIs()
@@ -17,7 +17,7 @@ class klass extends atoum\test
             ->given(
                 $class = uniqid(),
                 $this->mockGenerator->shuntParentClassCalls(),
-                $template = new \mock\mageekguy\atoum\reports\template(uniqid()),
+                $template = new \mock\atoum\atoum\reports\template(uniqid()),
                 $totalLines = rand(1, PHP_INT_MAX),
                 $coveredLines = rand(1, PHP_INT_MAX),
                 $totalBranches = rand(1, PHP_INT_MAX),
@@ -63,7 +63,7 @@ class klass extends atoum\test
                 $name = uniqid(),
                 $class = uniqid(),
                 $this->mockGenerator->shuntParentClassCalls(),
-                $template = new \mock\mageekguy\atoum\reports\template(uniqid())
+                $template = new \mock\atoum\atoum\reports\template(uniqid())
             )
             ->if($this->newTestedInstance($class))
             ->then
@@ -95,7 +95,7 @@ class klass extends atoum\test
                 $code = uniqid(),
                 $class = uniqid(),
                 $this->mockGenerator->shuntParentClassCalls(),
-                $template = new \mock\mageekguy\atoum\reports\template(uniqid())
+                $template = new \mock\atoum\atoum\reports\template(uniqid())
             )
             ->if($this->newTestedInstance($class))
             ->then

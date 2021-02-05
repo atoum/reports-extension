@@ -2,6 +2,9 @@
 
 namespace atoum\atoum\reports;
 
+use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
+
 class template
 {
     private $source;
@@ -11,7 +14,7 @@ class template
     {
         $this->source = $source;
 
-        $this->twig = new \Twig_Environment(new \Twig_Loader_Filesystem([__DIR__ . '/../resources/html/templates']));
+        $this->twig = new Environment(new FilesystemLoader([__DIR__ . '/../resources/html/templates']));
     }
 
     public function render(array $model, $destination)

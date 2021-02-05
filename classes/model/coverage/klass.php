@@ -1,10 +1,10 @@
 <?php
 
-namespace mageekguy\atoum\reports\model\coverage;
+namespace atoum\atoum\reports\model\coverage;
 
-use mageekguy\atoum\reports\model;
-use mageekguy\atoum\reports\model\coverage;
-use mageekguy\atoum\reports\template;
+use atoum\atoum\reports\model;
+use atoum\atoum\reports\model\coverage;
+use atoum\atoum\reports\template;
 
 class klass extends model
 {

@@ -1,6 +1,6 @@
-{% macro color(value) %}{% spaceless %}
+{% macro color(value) %}{% apply spaceless %}
         {{ value is not null ? (value < 0.3 ? 'danger' : (value < 0.7 ? 'warning' : 'success')) : 'default' }}
-{% endspaceless %}{% endmacro %}
+{% endapply %}{% endmacro %}
 
 {% macro labelify(value) %}
     {% set class = value is not null ? (value < 0.3 ? 'danger' : (value < 0.7 ? 'warning' : 'success')) : 'default' %}

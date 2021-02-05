@@ -1,14 +1,14 @@
 <?php
 
-namespace mageekguy\atoum\reports\tests\units\model;
+namespace atoum\atoum\reports\tests\units\model;
 
-use mageekguy\atoum;
+use atoum\atoum;
 
 class coverage extends atoum\test
 {
     public function testClass()
     {
-        $this->testedClass->extends('mageekguy\atoum\reports\model');
+        $this->testedClass->extends('atoum\atoum\reports\model');
     }
 
     public function testCoverageIs()
@@ -16,7 +16,7 @@ class coverage extends atoum\test
         $this
             ->given(
                 $this->mockGenerator->shuntParentClassCalls(),
-                $template = new \mock\mageekguy\atoum\reports\template(uniqid()),
+                $template = new \mock\atoum\atoum\reports\template(uniqid()),
                 $totalLines = rand(1, PHP_INT_MAX),
                 $coveredLines = rand(1, PHP_INT_MAX),
                 $totalBranches = rand(1, PHP_INT_MAX),
@@ -59,7 +59,7 @@ class coverage extends atoum\test
             ->given(
                 $name = uniqid(),
                 $this->mockGenerator->shuntParentClassCalls(),
-                $template = new \mock\mageekguy\atoum\reports\template(uniqid())
+                $template = new \mock\atoum\atoum\reports\template(uniqid())
             )
             ->if($this->newTestedInstance($name))
             ->then

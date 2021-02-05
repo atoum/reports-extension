@@ -21,12 +21,12 @@
                     <th id="L{{ number }}" class="number {{ line.hit >= 1 ? 'covered' : line.hit == -1 ? 'uncovered' : line.hit == -2 ? 'unreach' : '' }}">{{ number }}</th>
 
                     <td class="{{ line.hit >= 1 ? 'covered' : line.hit == -1 ? 'uncovered' : line.hit == -2 ? 'unreach' : '' }}" {% if line.method %}id="{{ line.method }}"{% endif %}>
-                        <pre>{{ line.code }}{% spaceless %}
+                        <pre>{{ line.code }}{% apply spaceless %}
                             {% if line.method is not null %}
                                 {{ macros.labelify(methods[line.method].coverage.lines) }}
                                 {{ macros.navigation(class, line.method, methods[line.method].coverage, 'line') }}
                             {% endif %}
-                        {% endspaceless %}</pre>
+                        {% endapply %}</pre>
                     </td>
                 </tr>
             {% endfor %}

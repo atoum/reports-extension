@@ -1,11 +1,11 @@
 <?php
 
-namespace mageekguy\atoum\reports\coverage;
+namespace atoum\atoum\reports\coverage;
 
-use mageekguy\atoum;
-use mageekguy\atoum\reports\coverage;
-use mageekguy\atoum\reports\model;
-use mageekguy\atoum\reports\score;
+use atoum\atoum;
+use atoum\atoum\reports\coverage;
+use atoum\atoum\reports\model;
+use atoum\atoum\reports\score;
 
 class html extends coverage
 {

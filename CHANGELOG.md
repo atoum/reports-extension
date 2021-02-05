@@ -1,3 +1,7 @@
+# 4.0.0 - 2020-02-05
+
+* [#53](https://github.com/atoum/reports-extension/pull/53) Compatibility with atoum 4 & PHP 8 ([@franck-paul] & [@Grummfy])
+
 # 3.0.0 - 2017-10-02
 
 * [#46](https://github.com/atoum/reports-extension/pull/46) Remove the telemetry report ([@jubianchi])
@@ -65,3 +69,5 @@
 [@jubianchi]: https://github.com/jubianchi
 [@ppaulis]: https://github.com/ppaulis
 [@vonglasow]: https://github.com/vonglasow
+[@Grummfy]: https://github.com/Grummfy
+[@franck-paul]: https://github.com/franck-paul
