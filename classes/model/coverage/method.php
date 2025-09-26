@@ -11,7 +11,7 @@ class method extends model
     private $branches;
     private $paths;
 
-    public function __construct($method, array $branches = null, array $paths = null)
+    public function __construct($method, ?array $branches = null, ?array $paths = null)
     {
         $this->method = $method;
         $this->branches = $branches;
