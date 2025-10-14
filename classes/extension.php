@@ -11,7 +11,7 @@ class extension implements atoum\extension
     protected $runner;
     protected $test;
 
-    public function __construct(atoum\configurator $configurator = null)
+    public function __construct(?atoum\configurator $configurator = null)
     {
         if ($configurator) {
             $parser = $configurator->getScript()->getArgumentsParser();
